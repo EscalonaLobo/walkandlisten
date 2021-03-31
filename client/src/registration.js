@@ -12,8 +12,8 @@ export default class Registation extends Component {
     }
 
     handleChange(e) {
-        console.log("input is doing something");
-        console.log(e.target.value);
+        // console.log("input is doing something");
+        // console.log(e.target.value);
         this.setState(
             {
                 // first: e.target.value,
@@ -23,20 +23,30 @@ export default class Registation extends Component {
         );
     }
 
-    handleClick() {
-        // axios
-        //     .post("/register", this.state)
-        //     .then(({ data }) {
-        //         if (everyhting went well) {
-        //             location.replace('/')
-        //         }
-        //     }else {
-        //         this.state({
-        //             error:true
-        //         })
-        //     }
-        //     .catch((err) => ("err in click", err));
-    }
+    // handleClick() {
+    //     console.log("clicked register button");
+    //     axios
+    //         .post("/register", this.state)
+    //         .then(({ data }) => {
+    //             console.log("somethign", data);
+    //         })
+    //         .catch((err) => console.log("err in post click", err));
+    //     // axios
+    //     //     .post("/register", this.state)
+    //     //     .then(({ data }) => {
+    //     //         console.log("post made", data)
+    //     //         // if (everything went well) {
+    //     //         //     // redirecting the user to '/' route
+    //     //         //     location.replace('/')
+    //     //         // } else {
+    //     //         //     // conditionally render an error message - this means something went wrong
+    //     //         //     this.setState({
+    //     //         //         error: true
+    //     //         //     })
+    //     //         }
+    //     //     })
+    //     //     .catch((err) => console.log("err in post /register: ", err));
+    // }
 
     render() {
         return (

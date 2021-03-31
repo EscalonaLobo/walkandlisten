@@ -2,8 +2,20 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const path = require("path");
+const { hash, compare } = require("./bc");
 
 app.use(compression());
+
+// app.post("/register", (req, res) => {
+//     const { first, last, email, password } = req.body;
+//     if (first == "" || last == "" || email == "" || password == "") {
+//         return res.json({ error: true });
+//     } else {
+//         hash(password).then((saltedPass) => {
+//             console.log("hash pass", saltedPass);
+//         });
+//     }
+// });
 
 app.get("/welcome", (req, res) => {
     //you will need a middleware to get this to work
@@ -17,11 +29,11 @@ app.get("/welcome", (req, res) => {
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 app.get("*", function (req, res) {
-    if (req.session.userId) {
-        res.redirect("/welcome");
-    } else {
-        res.sendFile(path.join(__dirname, "..", "client", "index.html"));
-    }
+    // // if (req.session.userId) {
+    // //     res.redirect("/welcome");
+    // // } else {
+    //     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+    // }
 
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
