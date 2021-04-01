@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const { signUp } = require("./db.js");
+const { signUp, getUser } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
 const { hash, compare } = require("./bc");
 const cookieSession = require("cookie-session");
+const { match } = require("assert");
 csurf = require("csurf");
 
 app.use(express.json());
@@ -26,6 +27,34 @@ app.use(function (req, res, next) {
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
+
+app.post("/login", (req, res) => {
+    console.log("post login");
+    const { email, password } = req.body;
+    getUser(email)
+        .then((data) => {
+            compare(password, data.rows[0].password)
+                .then((match) => {
+                    if (match) {
+                        console.log("pw matched!");
+                        res.json({
+                            success: true,
+                        });
+                    } else if (!match) {
+                        console.log("no match!");
+                        res.json({
+                            success: false,
+                        });
+                    }
+                })
+                .catch((err) => {
+                    console.log("error in compara", err);
+                });
+        })
+        .catch((err) => {
+            console.log("error in getUser", err);
+        });
+});
 
 app.post("/register", (req, res) => {
     console.log("post register");

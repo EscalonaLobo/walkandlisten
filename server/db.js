@@ -7,3 +7,9 @@ module.exports.signUp = function (first, last, email, saltedPass) {
     const params = [first, last, email, saltedPass];
     return db.query(query, params);
 };
+
+module.exports.getUser = function (email) {
+    const query = `SELECT password FROM users WHERE email = $1;`;
+    const params = [email];
+    return db.query(query, params);
+};

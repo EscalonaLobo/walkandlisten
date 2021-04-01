@@ -1,16 +1,21 @@
 import Registration from "./registration";
+import Login from "./login";
+import { HashRouter, Route } from "react-router-dom";
 
 export default function Welcome() {
     return (
         <div>
             <h1>Welcome to my SN!</h1>
-            <Registration />
+            <HashRouter>
+                <Route exact path="/" component={Registration} />
+                <Route exact path="/login" component={Login} />
+            </HashRouter>
         </div>
     );
 }
 
 // import Registration from "./registration";
-// import { HashRouter, Route } from "react-router-dom";
+//
 
 // export default function Welcome() {
 //     return (

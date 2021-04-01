@@ -1,5 +1,6 @@
 import { Component } from "react";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 export default class Registation extends Component {
     constructor() {
@@ -18,8 +19,8 @@ export default class Registation extends Component {
             {
                 // first: e.target.value,
                 [e.target.name]: e.target.value,
-            },
-            () => console.log("this state", this.state)
+            }
+            // () => console.log("this state", this.state)
         );
     }
 
@@ -46,6 +47,7 @@ export default class Registation extends Component {
         return (
             <div>
                 <h1>This is our registration component</h1>
+                <Link to="/login">Log in here</Link>
                 {this.state.error && <p>that's an mistake</p>}
                 <input
                     type="text"
