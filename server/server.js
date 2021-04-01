@@ -25,6 +25,8 @@ app.use(function (req, res, next) {
 
 app.use(compression());
 
+app.use(express.static(path.join(__dirname, "..", "client", "public")));
+
 app.post("/register", (req, res) => {
     console.log("post register");
     const { first, last, email, password } = req.body;
@@ -56,16 +58,12 @@ app.get("/welcome", (req, res) => {
     }
 });
 
-app.use(express.static(path.join(__dirname, "..", "client", "public")));
-
 app.get("*", function (req, res) {
-    // // if (req.session.userId) {
-    // //     res.redirect("/welcome");
-    // // } else {
-    //     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
-    // }
-
-    res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+    if (!req.session.userId) {
+        res.redirect("/welcome");
+    } else {
+        res.sendFile(path.join(__dirname, "..", "client", "index.html"));
+    }
 });
 
 app.listen(process.env.PORT || 3001, function () {

@@ -23,14 +23,15 @@ export default class Registation extends Component {
         );
     }
 
-    handleClick() {
+    handleClick(e) {
+        e.preventDefault();
         console.log("clicked register button");
         axios
             .post("/register", this.state)
             .then(({ data }) => {
                 console.log("somethign");
                 console.log(data);
-                if (data.sucess) {
+                if (data.success) {
                     location.replace("/");
                 } else {
                     this.setState({
