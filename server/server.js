@@ -1,21 +1,51 @@
 const express = require("express");
 const app = express();
+const { signUp } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
 const { hash, compare } = require("./bc");
+const cookieSession = require("cookie-session");
+csurf = require("csurf");
+
+app.use(express.json());
+
+app.use(
+    cookieSession({
+        secret: `I'm always angry.`,
+        maxAge: "1000 * 60 * 60 * 24 * 14s",
+    })
+);
+
+app.use(csurf());
+
+app.use(function (req, res, next) {
+    res.cookie("mytoken", req.csrfToken());
+    next();
+});
 
 app.use(compression());
 
-// app.post("/register", (req, res) => {
-//     const { first, last, email, password } = req.body;
-//     if (first == "" || last == "" || email == "" || password == "") {
-//         return res.json({ error: true });
-//     } else {
-//         hash(password).then((saltedPass) => {
-//             console.log("hash pass", saltedPass);
-//         });
-//     }
-// });
+app.post("/register", (req, res) => {
+    console.log("post register");
+    const { first, last, email, password } = req.body;
+    if (first == "" || last == "" || email == "" || password == "") {
+        return res.json({ error: true });
+    } else {
+        hash(password)
+            .then((saltedPass) => {
+                console.log("hash pass", saltedPass);
+                return signUp(first, last, email, saltedPass).then((data) => {
+                    req.session.userId = data.rows[0].id;
+                    res.json({
+                        success: true,
+                    });
+                });
+            })
+            .catch((err) => {
+                console.log("post err register", err);
+            });
+    }
+});
 
 app.get("/welcome", (req, res) => {
     //you will need a middleware to get this to work

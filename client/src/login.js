@@ -1,7 +1,8 @@
 import { Component } from "react";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
-export default class Registation extends Component {
+export default class login extends Component {
     constructor() {
         super();
         this.state = {
@@ -9,36 +10,6 @@ export default class Registation extends Component {
         };
 
         // this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        // console.log("input is doing something");
-        // console.log(e.target.value);
-        this.setState(
-            {
-                // first: e.target.value,
-                [e.target.name]: e.target.value,
-            },
-            () => console.log("this state", this.state)
-        );
-    }
-
-    handleClick() {
-        console.log("clicked register button");
-        axios
-            .post("/register", this.state)
-            .then(({ data }) => {
-                console.log("somethign");
-                console.log(data);
-                if (data.sucess) {
-                    location.replace("/");
-                } else {
-                    this.setState({
-                        error: true,
-                    });
-                }
-            })
-            .catch((err) => console.log("err in post click", err));
     }
 
     render() {
