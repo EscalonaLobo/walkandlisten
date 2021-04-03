@@ -58,6 +58,7 @@ export default class Login extends Component {
                     onChange={(e) => this.handleChange(e)}
                 ></input>
                 <button onClick={(e) => this.handleClick(e)}>Login</button>
+                <Link to="/reset">Reset password?</Link>
             </div>
         );
     }
