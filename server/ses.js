@@ -10,13 +10,13 @@ if (process.env.NODE_ENV == "production") {
 const ses = new aws.SES({
     accessKeyId: secrets.AWS_KEY,
     secretAccessKey: secrets.AWS_SECRET,
-    region: "eu-west-1", //we need to change that to eu frankfurt
+    region: "eu-central-1", //we need to change that to eu frankfurt
 });
 
 exports.sendEmail = (to, body, subject) =>
     ses
         .sendEmail({
-            Source: "Funky Chicken <funky.chicken@spiced.academy>",
+            Source: "GAEL SES <gabrielescalonalobo+66@gmail.com>",
             Destination: {
                 ToAddresses: [to],
             },
