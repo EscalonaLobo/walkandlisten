@@ -13,3 +13,23 @@ module.exports.getUser = function (email) {
     const params = [email];
     return db.query(query, params);
 };
+
+module.exports.getCode = function (email, code) {
+    const query =
+        "INSERT INTO code (email, code) VALUES ($1, $2) RETURNING created_at;";
+    const params = [email, code];
+    return db.query(query, params);
+};
+
+module.exports.getCode2 = function (email) {
+    const query =
+        "SELECT * FROM code WHERE CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes' AND email = $1;";
+    const params = [email];
+    return db.query(query, params);
+};
+
+module.exports.newPass = function (password, email) {
+    const query = "UPDATE users SET password = $1 WHERE email = $2;";
+    const params = [password, email];
+    return db.query(query, params);
+};

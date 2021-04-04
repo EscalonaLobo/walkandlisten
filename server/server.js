@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-const { signUp, getUser } = require("./db.js");
+const { signUp, getUser, getCode, getCode2, newPass } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
 const { hash, compare } = require("./bc");
 const cookieSession = require("cookie-session");
 const { match } = require("assert");
+const { json } = require("express");
+const cryptoRandomString = require("crypto-random-string");
+const { sendEmail } = require("./ses.js");
 csurf = require("csurf");
 
 app.use(express.json());
@@ -76,6 +79,50 @@ app.post("/register", (req, res) => {
                 console.log("post err register", err);
             });
     }
+});
+
+app.post("/reset/step2", (req, res) => {
+    const { email } = req.body;
+    getUser(email)
+        .then((data) => {
+            if (data.rows < 1) {
+                console.log("no email match");
+                return res.json({ error: true });
+            } else {
+                const { first } = data.rows[0];
+                const code = cryptoRandomString({
+                    length: 8,
+                });
+                getCode(email, code)
+                    .then(({ rows }) => {
+                        const subject = "Reset your password";
+                        const body = `Hello ${first},
+                Here you can find your secert code ${code}.`;
+                        sendEmail(email, body, subject).then(() => {
+                            res.json({
+                                success: true,
+                            });
+                        });
+                    })
+                    .catch((err) => console.log("err at getcode", err));
+            }
+        })
+        .catch((err) => console.log("err at server", err));
+});
+
+app.post("/reset/step3", (req, res) => {
+    const { email, code, password } = req.body;
+    getCode2(email).then(({ rows }) => {
+        if (rows[0].code != code) {
+            res.json({ error: true });
+        } else {
+            hash(password).then((saltedPass) => {
+                newPass(saltedPass, email).then(() => {
+                    res.json({ success: true, error: false });
+                });
+            });
+        }
+    });
 });
 
 app.get("/welcome", (req, res) => {
