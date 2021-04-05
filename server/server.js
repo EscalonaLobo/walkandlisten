@@ -111,16 +111,20 @@ app.post("/reset/step2", (req, res) => {
 });
 
 app.post("/reset/step3", (req, res) => {
-    const { email, code, password } = req.body;
+    const { email, code, newpassword } = req.body;
     getCode2(email).then(({ rows }) => {
         if (rows[0].code != code) {
+            console.log("code no good");
             res.json({ error: true });
         } else {
-            hash(password).then((saltedPass) => {
-                newPass(saltedPass, email).then(() => {
-                    res.json({ success: true, error: false });
-                });
-            });
+            hash(newpassword)
+                .then((saltedPass) => {
+                    newPass(saltedPass, email).then(() => {
+                        console.log(saltedPass, email);
+                        res.json({ success: true, error: false });
+                    });
+                })
+                .catch((err) => console.log("err hash step 3", err));
         }
     });
 });

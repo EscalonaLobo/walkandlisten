@@ -48,11 +48,11 @@ export default class Reset extends Component {
 
     handleClick2(e) {
         e.preventDefault();
-        console.log("clicked login button");
+        console.log("clicked submit in reset");
         axios
             .post("/reset/step3", this.state)
             .then(({ data }) => {
-                console.log("something in login");
+                console.log("something reset");
                 console.log(data);
                 if (data.error) {
                     this.setState({
@@ -104,7 +104,7 @@ export default class Reset extends Component {
                             placeholder="password"
                             onChange={(e) => this.handleChange(e)}
                         ></input>
-                        <button onClick={(e) => this.handleClick(e)}>
+                        <button onClick={(e) => this.handleClick2(e)}>
                             Submit
                         </button>
                     </div>
