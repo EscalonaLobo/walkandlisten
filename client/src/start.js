@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom";
 import Welcome from "./welcome";
-import Logo from "./logo";
-import App from "./app";
+import { App } from "./app";
 
 let elem;
 

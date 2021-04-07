@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const { signUp, getUser, getCode, getCode2, newPass } = require("./db.js");
+const {
+    signUp,
+    getUser,
+    getCode,
+    getCode2,
+    newPass,
+    userInfo,
+} = require("./db.js");
 const compression = require("compression");
 const path = require("path");
 const { hash, compare } = require("./bc");
@@ -10,6 +17,9 @@ const { json } = require("express");
 const cryptoRandomString = require("crypto-random-string");
 const { sendEmail } = require("./ses.js");
 csurf = require("csurf");
+const multer = require("multer");
+const s3 = require("./s3");
+const { s3Url } = require("./config.json");
 
 app.use(express.json());
 
@@ -28,6 +38,24 @@ app.use(function (req, res, next) {
 });
 
 app.use(compression());
+
+const diskStorage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, __dirname + "/uploads");
+    },
+    filename: function (req, file, callback) {
+        uidSafe(24).then(function (uid) {
+            callback(null, uid + path.extname(file.originalname));
+        });
+    },
+});
+
+const uploader = multer({
+    storage: diskStorage,
+    limits: {
+        fileSize: 2097152,
+    },
+});
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
@@ -126,6 +154,22 @@ app.post("/reset/step3", (req, res) => {
                 })
                 .catch((err) => console.log("err hash step 3", err));
         }
+    });
+});
+
+app.get("/user", (req, res) => {
+    userInfo(req.session.userId).then((data) => {
+        res.json({
+            first: data.rows[0].first,
+            last: data.rows[0].last,
+            profilepic: data.rows[0].profilepic,
+        });
+    });
+});
+
+app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
+    insertPic(req.session.userId, s3Url + req.file.filename).then((rows) => {
+        res.json({ image: rows[0] });
     });
 });
 

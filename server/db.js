@@ -33,3 +33,15 @@ module.exports.newPass = function (password, email) {
     const params = [password, email];
     return db.query(query, params);
 };
+
+module.exports.userInfo = function (id) {
+    const query = "SELECT first, last, profilepic FROM users WHERE id=$1;";
+    const params = [id];
+    return db.query(query, params);
+};
+
+module.exports.insertPic = function (id, img) {
+    const query = "UPDATE users SET profilepic = $1 WHERE id = $2;";
+    const params = [id, img];
+    return db.query(query, params);
+};
