@@ -21,14 +21,15 @@ const multer = require("multer");
 const s3 = require("./s3");
 const { s3Url } = require("./config.json");
 
-app.use(express.json());
-
 app.use(
     cookieSession({
         secret: `I'm always angry.`,
         maxAge: "1000 * 60 * 60 * 24 * 14s",
     })
 );
+app.use(compression());
+
+app.use(express.json());
 
 app.use(csurf());
 
@@ -36,8 +37,6 @@ app.use(function (req, res, next) {
     res.cookie("mytoken", req.csrfToken());
     next();
 });
-
-app.use(compression());
 
 const diskStorage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -168,6 +167,7 @@ app.get("/user", (req, res) => {
 });
 
 app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
+    console.log("post made");
     insertPic(req.session.userId, s3Url + req.file.filename).then((rows) => {
         res.json({ image: rows[0] });
     });

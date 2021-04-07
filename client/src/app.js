@@ -17,8 +17,19 @@ export class App extends Component {
         console.log("app mounted");
         axios.get("/user").then((res) => {
             console.log("data fetched");
-            console(res.data);
+            console.log(res.data);
             this.setState({ user: res.data });
+        });
+    }
+
+    setProfilePic(profilepic) {
+        this.setState((prevState) => {
+            return {
+                user: {
+                    ...prevState.user,
+                    profilepic,
+                },
+            };
         });
     }
 
@@ -28,7 +39,11 @@ export class App extends Component {
                 This is app
                 <Logo />
                 <ProfilePic />
-                <Uploader />
+                <Uploader
+                    setProfilePic={(profilepic) =>
+                        this.setProfilePic(profilepic)
+                    }
+                />
             </section>
         );
     }
