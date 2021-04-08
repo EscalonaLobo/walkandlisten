@@ -8,6 +8,7 @@ const {
     newPass,
     userInfo,
     insertPic,
+    updateBio,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -164,6 +165,7 @@ app.get("/user", (req, res) => {
             first: data.rows[0].first,
             last: data.rows[0].last,
             profilepic: data.rows[0].profilepic,
+            bio: data.rows[0].bio,
         });
     });
 });
@@ -172,6 +174,13 @@ app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
     console.log("post made");
     insertPic(s3Url + req.file.filename, req.session.userId).then((result) => {
         res.json({ success: true, result });
+    });
+});
+
+app.post("/userbio", (req, res) => {
+    updateBio(req.body.bio, req.session.userId).then((result) => {
+        console.log("bio data", result);
+        res.json(result.rows[0]);
     });
 });
 

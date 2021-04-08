@@ -35,7 +35,7 @@ module.exports.newPass = function (password, email) {
 };
 
 module.exports.userInfo = function (id) {
-    const query = "SELECT first, last, profilepic FROM users WHERE id=$1;";
+    const query = "SELECT first, last, profilepic, bio FROM users WHERE id=$1;";
     const params = [id];
     return db.query(query, params);
 };
@@ -44,5 +44,11 @@ module.exports.insertPic = function (img, id) {
     const query =
         "UPDATE users SET profilepic = $1 WHERE id = $2 RETURNING id, profilepic;";
     const params = [img, id];
+    return db.query(query, params);
+};
+
+module.exports.updateBio = function (bio, id) {
+    const query = "UPDATE users SET bio = $1 WHERE id = $2 RETURNING id, bio;";
+    const params = [bio, id];
     return db.query(query, params);
 };
