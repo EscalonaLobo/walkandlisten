@@ -41,12 +41,24 @@ export class App extends Component {
         });
     }
 
+    setBio(newBio) {
+        this.setState((prevState) => {
+            return {
+                user: {
+                    ...prevState.user,
+                    bio: newBio,
+                },
+            };
+        });
+    }
+
     render() {
         return (
             <section id="app">
                 This is app
                 <Logo />
                 <ProfilePic {...this.state.user} />
+                <Profile {...this.state.user} />
                 <Uploader
                     setProfilePic={(newpic) => this.setProfilePic(newpic)}
                 />
