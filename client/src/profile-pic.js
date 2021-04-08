@@ -3,7 +3,7 @@ export default function ProfilePic(props) {
     return (
         <div>
             <div>Profile Pic</div>
-            <img src={props.url}></img>
+            <img src={props.profilepic}></img>
         </div>
     );
 }

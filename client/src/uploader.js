@@ -18,7 +18,7 @@ export default class Uploader extends Component {
     handleClick() {
         let formData = new FormData();
         formData.append("file", this.state.file);
-        axios.post("/picupload", formData).then((data) => {
+        axios.post("/picupload", formData).then(({ data }) => {
             console.log("post made pic");
             console.log("picupload", data);
             this.props.setProfilePic(data.result.rows[0].profilepic);
