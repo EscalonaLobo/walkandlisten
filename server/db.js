@@ -40,8 +40,9 @@ module.exports.userInfo = function (id) {
     return db.query(query, params);
 };
 
-module.exports.insertPic = function (id, img) {
-    const query = "UPDATE users SET profilepic = $1 WHERE id = $2;";
-    const params = [id, img];
+module.exports.insertPic = function (img, id) {
+    const query =
+        "UPDATE users SET profilepic = $1 WHERE id = $2 RETURNING id, profilepic;";
+    const params = [img, id];
     return db.query(query, params);
 };

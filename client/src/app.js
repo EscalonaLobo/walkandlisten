@@ -22,12 +22,20 @@ export class App extends Component {
         });
     }
 
-    setProfilePic(profilepic) {
+    showUploader() {
+        this.setState({ uploaderVisible: true });
+    }
+
+    // hideUploader() {
+    //     this.setState({ uploaderVisible: false });
+    // }
+
+    setProfilePic(newpic) {
         this.setState((prevState) => {
             return {
                 user: {
                     ...prevState.user,
-                    profilepic,
+                    profilepic: newpic,
                 },
             };
         });
@@ -38,11 +46,9 @@ export class App extends Component {
             <section id="app">
                 This is app
                 <Logo />
-                <ProfilePic />
+                <ProfilePic {...this.state.user} />
                 <Uploader
-                    setProfilePic={(profilepic) =>
-                        this.setProfilePic(profilepic)
-                    }
+                    setProfilePic={(newpic) => this.setProfilePic(newpic)}
                 />
             </section>
         );

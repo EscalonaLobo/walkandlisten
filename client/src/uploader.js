@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axios";
 import { Component } from "react";
 
 export default class Uploader extends Component {
@@ -16,19 +16,13 @@ export default class Uploader extends Component {
     }
 
     handleClick() {
-        console.log("click on upload");
         let formData = new FormData();
         formData.append("file", this.state.file);
-        console.log("onclick", this.state.file);
-        console.log(formData);
-        axios
-            .post("/picupload", formData)
-            .then((data) => {
-                console.log("post made pic");
-                this.state.url = data.data.url;
-                this.props.setProfilePic(data.data.url);
-            })
-            .then(console.log(this.state));
+        axios.post("/picupload", formData).then((data) => {
+            console.log("post made pic");
+            console.log("picupload", data);
+            this.props.setProfilePic(data.result.rows[0].profilepic);
+        });
     }
 
     render() {

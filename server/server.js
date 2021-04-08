@@ -7,6 +7,7 @@ const {
     getCode2,
     newPass,
     userInfo,
+    insertPic,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -18,6 +19,7 @@ const cryptoRandomString = require("crypto-random-string");
 const { sendEmail } = require("./ses.js");
 csurf = require("csurf");
 const multer = require("multer");
+const uidSafe = require("uid-safe");
 const s3 = require("./s3");
 const { s3Url } = require("./config.json");
 
@@ -168,8 +170,8 @@ app.get("/user", (req, res) => {
 
 app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
     console.log("post made");
-    insertPic(req.session.userId, s3Url + req.file.filename).then((rows) => {
-        res.json({ image: rows[0] });
+    insertPic(s3Url + req.file.filename, req.session.userId).then((result) => {
+        res.json({ success: true, result });
     });
 });
 
