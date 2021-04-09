@@ -15,9 +15,27 @@ export default class BioEditor extends Component {
         // May wanna bind some methods here
     }
 
-    // toggleEditMode() {
-    //     // To toggle the editMode state variable.
-    // }
+    getEditor() {
+        this.setState({ showEditor: true });
+    }
+
+    addBio() {
+        return (
+            <div>
+                <button onClick={() => this.getEditor()}>Add bio</button>
+            </div>
+        );
+    }
+
+    toggleEditMode() {
+        // To toggle the editMode state variable.
+        return (
+            <div>
+                {this.props.bio}
+                <button onClick={() => this.getEditor()}>Edit Bio</button>
+            </div>
+        );
+    }
 
     handleBioChange(event) {
         console.log(event);
@@ -46,15 +64,27 @@ export default class BioEditor extends Component {
     }
 
     render() {
+        let { bio } = this.props;
+        let button = bio ? this.toggleEditMode() : this.addBio();
         return (
-            <div id="bio-editor">
-                <h1>Bio</h1>
-                <textarea
-                    onChange={() => this.handleBioChange(event)}
-                    className="textArea"
-                    name="bio"
-                ></textarea>
-                <button onClick={() => this.submitBio()}>Save</button>
+            <div>
+                <div id="bio-editor">
+                    <h1>Bio</h1>
+                    {this.state.showEditor && (
+                        <div>
+                            <textarea
+                                onChange={() => this.handleBioChange(event)}
+                                className="textArea"
+                                name="bio"
+                            ></textarea>
+                            <button onClick={() => this.submitBio()}>
+                                Save
+                            </button>
+                        </div>
+                    )}
+
+                    <div>{button}</div>
+                </div>
             </div>
         );
     }
