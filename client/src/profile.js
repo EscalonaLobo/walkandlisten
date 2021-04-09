@@ -15,7 +15,7 @@ export function Profile(props) {
                 profilepic={props.profilepic}
                 showUploader={props.showUploader}
             />
-            <BioEditor />
+            <BioEditor bio={props.bio} setBio={props.setBio} />
         </section>
     );
 }

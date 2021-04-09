@@ -4,7 +4,6 @@ import axios from "./axios";
 
 export default class BioEditor extends Component {
     constructor(props) {
-        console.log("props in bioeditor", props);
         super(props);
 
         this.state = {
@@ -39,7 +38,8 @@ export default class BioEditor extends Component {
             .post("/userbio", this.state)
             .then((res) => {
                 console.log(res);
-                // this.props.setBio(res.data.bio);
+                console.log("props in bio", this.props);
+                this.props.setBio(res.data.bio);
                 this.setState({ showEditor: false });
             })
             .catch((err) => console.log("err in post bio", err));

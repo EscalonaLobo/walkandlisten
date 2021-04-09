@@ -59,7 +59,10 @@ export class App extends Component {
                 This is app
                 <Logo />
                 <ProfilePic {...this.state.user} />
-                <Profile {...this.state.user} />
+                <Profile
+                    {...this.state.user}
+                    setBio={(newBio) => this.setBio(newBio)}
+                />
                 <Uploader
                     setProfilePic={(newpic) => this.setProfilePic(newpic)}
                 />
