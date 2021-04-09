@@ -1,9 +1,10 @@
-import { response } from "express";
+// import { response } from "express";
 import { Component } from "react";
 import axios from "./axios";
 
 export default class BioEditor extends Component {
     constructor(props) {
+        console.log("props in bioeditor", props);
         super(props);
 
         this.state = {
@@ -15,11 +16,12 @@ export default class BioEditor extends Component {
         // May wanna bind some methods here
     }
 
-    toggleEditMode() {
-        // To toggle the editMode state variable.
-    }
+    // toggleEditMode() {
+    //     // To toggle the editMode state variable.
+    // }
 
     handleBioChange(event) {
+        console.log(event);
         // To keep track of the bio the user types
         this.setState(
             {
@@ -32,22 +34,28 @@ export default class BioEditor extends Component {
     submitBio() {
         // 1. Post the new bio the user typed (you should read it from this.state.draft)
         // 2. Set the new bio in the state of App
-        axios.post("/userbio", this.state).then((res) => {
-            console.log(res);
-            this.props.setBio(response.data.bio);
-            this.setState({ showEditor: false });
-        });
+        console.log("click on save");
+        axios
+            .post("/userbio", this.state)
+            .then((res) => {
+                console.log(res);
+                // this.props.setBio(res.data.bio);
+                this.setState({ showEditor: false });
+            })
+            .catch((err) => console.log("err in post bio", err));
     }
 
     render() {
         return (
-            <section id={"bio-editor"}>
-                {/*
-                 Lots of rendering logic here, depending on whether:
-                 1. You are in edit mode or not
-                 2. If you are not in edit mode: whether a bio already exists
-                 */}
-            </section>
+            <div id="bio-editor">
+                <h1>Bio</h1>
+                <textarea
+                    onChange={() => this.handleBioChange(event)}
+                    className="textArea"
+                    name="bio"
+                ></textarea>
+                <button onClick={() => this.submitBio()}>Save</button>
+            </div>
         );
     }
 }

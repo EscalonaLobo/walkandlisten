@@ -178,6 +178,7 @@ app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
 });
 
 app.post("/userbio", (req, res) => {
+    console.log("post userbio");
     updateBio(req.body.bio, req.session.userId).then((result) => {
         console.log("bio data", result);
         res.json(result.rows[0]);

@@ -3,6 +3,7 @@ import Logo from "./logo";
 import ProfilePic from "./profile-pic";
 import Uploader from "./uploader";
 import axios from "./axios";
+import { Profile } from "./profile";
 
 export class App extends Component {
     constructor(props) {

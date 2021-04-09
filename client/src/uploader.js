@@ -27,7 +27,7 @@ export default class Uploader extends Component {
 
     render() {
         return (
-            <div>
+            <div id="uploader">
                 <div>Uploader</div>
                 <input
                     onChange={(e) => this.handleChange(e)}
