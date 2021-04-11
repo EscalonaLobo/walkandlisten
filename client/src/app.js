@@ -4,6 +4,8 @@ import ProfilePic from "./profile-pic";
 import Uploader from "./uploader";
 import axios from "./axios";
 import { Profile } from "./profile";
+import { BrowserRouter, Route } from "react-router-dom";
+import OtherProfile from "./otherprofile";
 
 export class App extends Component {
     constructor(props) {
@@ -59,10 +61,22 @@ export class App extends Component {
                 This is app
                 <Logo />
                 <ProfilePic {...this.state.user} />
-                <Profile
-                    {...this.state.user}
-                    setBio={(newBio) => this.setBio(newBio)}
-                />
+                <BrowserRouter>
+                    <div>
+                        <Route
+                            path="/"
+                            render={() => {
+                                return (
+                                    <Profile
+                                        {...this.state.user}
+                                        setBio={(newBio) => this.setBio(newBio)}
+                                    />
+                                );
+                            }}
+                        />
+                        <Route path="/user/:id" component={OtherProfile} />
+                    </div>
+                </BrowserRouter>
                 <Uploader
                     setProfilePic={(newpic) => this.setProfilePic(newpic)}
                 />

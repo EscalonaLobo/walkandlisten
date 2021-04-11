@@ -1,18 +1,27 @@
-import React from "react";
+import { Component } from "react";
 import axios from "./axios";
 
-export default class OtherProfile extends React.Component {
+export default class OtherProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
-    async componentDidMount() {
-        const { data } = axios.get(`/user/${this.props.match.params.id}.json`);
-        if (data.invalid || data.userIsViewingSelf) {
-            this.props.history.push("/"); //maybe render an error message instead of redirecting?
-        }
-        this.setState(data);
+
+    componentDidMount() {
+        console.log("it mounted", this.state);
+        axios
+            .get(`/user/${this.props.match.params.id}.json`)
+            .then(({ data }) => {
+                if (data.getPofile) {
+                    this.props.history.push("/");
+                } else {
+                    this.setState(data);
+                    console.log(this.state);
+                }
+            })
+            .catch((err) => console.log("error in mount", err));
     }
+
     render() {
         return (
             <div>

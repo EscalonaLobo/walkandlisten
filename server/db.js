@@ -52,3 +52,9 @@ module.exports.updateBio = function (bio, id) {
     const params = [bio, id];
     return db.query(query, params);
 };
+
+module.exports.getUserInfo = function (id) {
+    const query = "SELECT * FROM users WHERE id = $1;";
+    const params = [id];
+    return db.query(query, params);
+};

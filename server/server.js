@@ -9,6 +9,7 @@ const {
     userInfo,
     insertPic,
     updateBio,
+    getUserInfo,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -183,6 +184,22 @@ app.post("/userbio", (req, res) => {
         console.log("bio data", result);
         res.json(result.rows[0]);
     });
+});
+
+app.get("/user/:id.json", (req, res) => {
+    let { userId } = req.session;
+    if (userId == req.params.id) {
+        req.json({ getProfile: true });
+    } else {
+        getUserInfo(req.params.id)
+            .then((result) => {
+                console.log("user", result);
+                res.json(result.rows[0]);
+            })
+            .catch((err) => {
+                console.log("err in user id", err);
+            });
+    }
 });
 
 app.get("/welcome", (req, res) => {
