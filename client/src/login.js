@@ -29,6 +29,7 @@ export default class Login extends Component {
                 console.log("something in login");
                 console.log(data);
                 if (data.success) {
+                    console.log("success!!");
                     location.replace("/");
                 } else {
                     this.setState({
@@ -41,8 +42,7 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Login</h1>
+            <div id="login">
                 <Link to="/">New user? Register here.</Link>
                 {this.state.error && <p>that's an mistake</p>}
                 <input
@@ -58,6 +58,7 @@ export default class Login extends Component {
                     onChange={(e) => this.handleChange(e)}
                 ></input>
                 <button onClick={(e) => this.handleClick(e)}>Login</button>
+                <p>or</p>
                 <Link to="/reset">Reset password?</Link>
             </div>
         );

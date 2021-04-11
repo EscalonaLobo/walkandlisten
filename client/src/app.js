@@ -29,9 +29,9 @@ export class App extends Component {
         this.setState({ uploaderVisible: true });
     }
 
-    // hideUploader() {
-    //     this.setState({ uploaderVisible: false });
-    // }
+    hideUploader() {
+        this.setState({ uploaderVisible: false });
+    }
 
     setProfilePic(newpic) {
         this.setState((prevState) => {
@@ -40,6 +40,7 @@ export class App extends Component {
                     ...prevState.user,
                     profilepic: newpic,
                 },
+                uploaderVisible: false,
             };
         });
     }
@@ -58,9 +59,15 @@ export class App extends Component {
     render() {
         return (
             <section id="app">
-                This is app
-                <Logo />
-                <ProfilePic {...this.state.user} />
+                <h1>The Facebook Rip-off</h1>
+                <div id="header">
+                    <Logo />
+                    <ProfilePic
+                        {...this.state.user}
+                        showUploader={() => this.showUploader()}
+                    />
+                </div>
+
                 <BrowserRouter>
                     <div>
                         <Route
@@ -77,9 +84,12 @@ export class App extends Component {
                         <Route path="/user/:id" component={OtherProfile} />
                     </div>
                 </BrowserRouter>
-                <Uploader
-                    setProfilePic={(newpic) => this.setProfilePic(newpic)}
-                />
+                {this.state.uploaderVisible && (
+                    <Uploader
+                        hideUploader={() => this.hideUploader()}
+                        setProfilePic={(newpic) => this.setProfilePic(newpic)}
+                    />
+                )}
             </section>
         );
     }

@@ -1,45 +1,99 @@
 body {
     background-color: ghostwhite;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: tomato;
+}
+
+#welcome {
+    margin-left: 18%;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #registration {
-    width: 800px;
-    height: 500px;
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: tomato;
+}
+
+#reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 400px;
-    height: 400px;
-    background-color: bisque;
-    border: 20px;
+    height: 300px;
+    background-color: royalblue;
+    box-shadow: 10px 5px 5px black;
+    position: relative;
+    z-index: 1;
 }
 
 #app {
-    width: 800px;
-    height: 800px;
-    background-color: cyan;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: tomato;
 }
 
 #logo {
     width: 50px;
     height: 50px;
-    background-color: cadetblue;
-    margin: 20px;
+    align-self: flex-start;
+    border: 5px dotted red;
+    margin-right: 100px;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
 }
 
 #profilepic {
-    width: 150px;
-    height: 150px;
-    background-color: darkgoldenrod;
-    margin: 20px;
+    width: 50px;
+    height: 50px;
+    align-self: flex-end;
+    border: 5px dotted red;
 }
 
 #uploader {
-    width: 500px;
+    position: absolute;
+    z-index: 2;
+    width: 150px;
     height: 50px;
-    background-color: darkgreen;
-    margin: 20px;
+    background-color: fuchsia;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 5px 5px black;
+    margin-top: 250px;
+}
+
+#uploader-input {
+    font-size: 0.5rem;
+    margin: 0;
+}
+
+#btn-uploader {
+    font-size: 0.5rem;
+    align-self: start;
 }
 
 img {

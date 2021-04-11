@@ -5,10 +5,10 @@ export function Profile(props) {
     console.log("props in profile", props);
     // All the props need to be passed down from <App />
     return (
-        <section id={"profile"}>
-            <h2>
+        <div id={"profile"}>
+            <p>
                 {props.first} {props.last}
-            </h2>
+            </p>
             <ProfilePic
                 firstName={props.first}
                 lastName={props.last}
@@ -16,6 +16,6 @@ export function Profile(props) {
                 showUploader={props.showUploader}
             />
             <BioEditor bio={props.bio} setBio={props.setBio} />
-        </section>
+        </div>
     );
 }

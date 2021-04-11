@@ -28,14 +28,14 @@ export default class Uploader extends Component {
     render() {
         return (
             <div id="uploader">
-                <div>Uploader</div>
                 <input
+                    id="uploader-input"
                     onChange={(e) => this.handleChange(e)}
                     type="file"
                     name="file"
                     accept="image/*"
                 />
-                <button onClick={() => this.handleClick()}>
+                <button id="btn-uploader" onClick={() => this.handleClick()}>
                     Upload profile pic
                 </button>
             </div>

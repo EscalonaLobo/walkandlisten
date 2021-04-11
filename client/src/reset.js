@@ -71,8 +71,8 @@ export default class Reset extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Reset password</h1>
+            <div id="reset">
+                <p>Reset your password</p>
                 {this.state.error && <p>that's an mistake</p>}
                 {this.state.step1 && (
                     <div>

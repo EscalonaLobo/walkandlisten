@@ -69,7 +69,7 @@ export default class BioEditor extends Component {
         return (
             <div>
                 <div id="bio-editor">
-                    <h1>Bio</h1>
+                    <p>Manage your bio</p>
                     {this.state.showEditor && (
                         <div>
                             <textarea

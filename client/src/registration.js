@@ -46,7 +46,7 @@ export default class Registation extends Component {
     render() {
         return (
             <div id="registration">
-                <h1>This is our registration component</h1>
+                <h2>Register today!</h2>
                 <Link to="/login">Log in here</Link>
                 {this.state.error && <p>that's an mistake</p>}
                 <input
