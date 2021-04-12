@@ -10,6 +10,7 @@ const {
     insertPic,
     updateBio,
     getUserInfo,
+    lastThreeUsers,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -70,9 +71,9 @@ app.post("/login", (req, res) => {
             compare(password, data.rows[0].password)
                 .then((match) => {
                     if (match) {
-                        req.session.userId = data.rows[0].id;
-                        console.log(data);
+                        console.log(data.rows);
                         console.log("pw matched!");
+                        req.session.userId = data.rows[0].id;
                         res.json({
                             success: true,
                         });
@@ -103,6 +104,7 @@ app.post("/register", (req, res) => {
                 console.log("hash pass", saltedPass);
                 return signUp(first, last, email, saltedPass).then((data) => {
                     req.session.userId = data.rows[0].id;
+                    console.log("userid", req.session.userId);
                     res.json({
                         success: true,
                     });
@@ -202,6 +204,11 @@ app.get("/user/:id.json", (req, res) => {
                 console.log("err in user id", err);
             });
     }
+});
+
+app.get("/users/friends", async (req, res) => {
+    const data = await lastThreeUsers();
+    res.json(data);
 });
 
 app.get("/welcome", (req, res) => {

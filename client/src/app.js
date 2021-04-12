@@ -6,6 +6,7 @@ import axios from "./axios";
 import { Profile } from "./profile";
 import { BrowserRouter, Route } from "react-router-dom";
 import OtherProfile from "./otherprofile";
+import FindPeople from "./findpeople";
 
 export class App extends Component {
     constructor(props) {
@@ -83,6 +84,7 @@ export class App extends Component {
                             }}
                         />
                         <Route path="/user/:id" component={OtherProfile} />
+                        <Route path="/users/" component={FindPeople} />
                     </div>
                 </BrowserRouter>
                 {this.state.uploaderVisible && (

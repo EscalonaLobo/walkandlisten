@@ -58,3 +58,8 @@ module.exports.getUserInfo = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+module.exports.lastThreeUsers = function () {
+    const query = "SELECT * FROM users ORDER BY id DESC LIMIT 3;";
+    return db.query(query);
+};
