@@ -70,6 +70,8 @@ app.post("/login", (req, res) => {
             compare(password, data.rows[0].password)
                 .then((match) => {
                     if (match) {
+                        req.session.userId = data.rows[0].id;
+                        console.log(data);
                         console.log("pw matched!");
                         res.json({
                             success: true,

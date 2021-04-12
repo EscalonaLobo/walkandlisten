@@ -71,6 +71,7 @@ export class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Route
+                            exact
                             path="/"
                             render={() => {
                                 return (
