@@ -12,6 +12,7 @@ const {
     getUserInfo,
     lastThreeUsers,
     searchUsers,
+    areWeFriends,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -198,7 +199,7 @@ app.get("/user/:id.json", (req, res) => {
     } else {
         getUserInfo(req.params.id)
             .then((result) => {
-                console.log("user", result);
+                // console.log("user", result);
                 res.json(result.rows[0]);
             })
             .catch((err) => {
@@ -217,6 +218,15 @@ app.get("/users/friends/:query", async (req, res) => {
     console.log("something /query");
     const data = await searchUsers(req.params.query);
     res.json(data.rows);
+});
+
+app.get("/friendship/:id", async (req, res) => {
+    console.log("get friendship status");
+    const data = await areWeFriends(req.params.id, req.session.userId);
+    console.log("friendship status data", data);
+    if (!data.length) {
+        res.json(data.rows);
+    }
 });
 
 app.get("/welcome", (req, res) => {
