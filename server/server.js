@@ -216,7 +216,7 @@ app.get("/users/friends", async (req, res) => {
 app.get("/users/friends/:query", async (req, res) => {
     console.log("something /query");
     const data = await searchUsers(req.params.query);
-    res.json(data);
+    res.json(data.rows);
 });
 
 app.get("/welcome", (req, res) => {
