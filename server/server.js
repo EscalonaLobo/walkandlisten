@@ -11,6 +11,7 @@ const {
     updateBio,
     getUserInfo,
     lastThreeUsers,
+    searchUsers,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -207,7 +208,14 @@ app.get("/user/:id.json", (req, res) => {
 });
 
 app.get("/users/friends", async (req, res) => {
+    console.log("something /friends");
     const data = await lastThreeUsers();
+    res.json(data.rows);
+});
+
+app.get("/users/friends/:query", async (req, res) => {
+    console.log("something /query");
+    const data = await searchUsers(req.params.query);
     res.json(data);
 });
 

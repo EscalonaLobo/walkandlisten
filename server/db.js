@@ -9,7 +9,7 @@ module.exports.signUp = function (first, last, email, saltedPass) {
 };
 
 module.exports.getUser = function (email) {
-    const query = `SELECT password FROM users WHERE email = $1;`;
+    const query = `SELECT password, id FROM users WHERE email = $1;`;
     const params = [email];
     return db.query(query, params);
 };
@@ -62,4 +62,10 @@ module.exports.getUserInfo = function (id) {
 module.exports.lastThreeUsers = function () {
     const query = "SELECT * FROM users ORDER BY id DESC LIMIT 3;";
     return db.query(query);
+};
+
+module.exports.searchUsers = function (val) {
+    const query = "SELECT first FROM users WHERE first ILIKE $1;";
+    const params = [val + "%"];
+    return db.query(query, params);
 };
