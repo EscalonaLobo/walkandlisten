@@ -76,3 +76,17 @@ module.exports.areWeFriends = function (viewedUser, viewerUser) {
     const params = [viewedUser, viewerUser];
     return db.query(query, params);
 };
+
+module.exports.letsBeFriends = function (viewerUser, viewedUser) {
+    const query =
+        "INSERT INTO friendships (recipient_id, sender_id) VALUES ($1, $2);";
+    const params = [viewedUser, viewerUser];
+    return db.query(query, params);
+};
+
+module.exports.deleteRequest = function (viewedUser, viewerUser) {
+    const query =
+        "DELETE FROM friendships WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1)";
+    const params = [viewedUser, viewerUser];
+    return db.query(query, params);
+};

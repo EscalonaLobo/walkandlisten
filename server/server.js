@@ -13,6 +13,7 @@ const {
     lastThreeUsers,
     searchUsers,
     areWeFriends,
+    letsBeFriends,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -224,9 +225,14 @@ app.get("/friendship/:id", async (req, res) => {
     console.log("get friendship status");
     const data = await areWeFriends(req.params.id, req.session.userId);
     console.log("friendship status data", data);
-    if (!data.length) {
-        res.json(data.rows);
+    if (data) {
+        res.return("none");
     }
+});
+
+app.post("/friendship", async (req, res) => {
+    console.log("post friendship");
+    const data = await letsBeFriends(req.session.userId);
 });
 
 app.get("/welcome", (req, res) => {

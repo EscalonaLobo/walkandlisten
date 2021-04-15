@@ -1,8 +1,12 @@
 // friendshipButton.js
-import axios from "axios";
+import axios from "./axios";
 import { useState, useEffect } from "react";
+import { friendButton } from "./hooks/button.js";
 
 export function FriendshipButton(props) {
+    const [buttonText, setButtonText] = friendButton();
+    const [friendshipStatus, setfriendshipStatus] = useEffect();
+
     useEffect(() => {
         console.log("useeffect running");
         (async () => {
@@ -26,7 +30,7 @@ export function FriendshipButton(props) {
     //
     return (
         <>
-            <button>BUTTON TEXT!</button>
+            <button>{buttonText}</button>
         </>
     );
 }
