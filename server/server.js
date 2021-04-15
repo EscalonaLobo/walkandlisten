@@ -14,6 +14,8 @@ const {
     searchUsers,
     areWeFriends,
     letsBeFriends,
+    acceptFriendship,
+    deleteRequest,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -189,6 +191,7 @@ app.post("/userbio", (req, res) => {
     console.log("post userbio");
     updateBio(req.body.bio, req.session.userId).then((result) => {
         console.log("bio data", result);
+        console.log("body bio", req.body);
         res.json(result.rows[0]);
     });
 });
@@ -224,15 +227,30 @@ app.get("/users/friends/:query", async (req, res) => {
 app.get("/friendship/:id", async (req, res) => {
     console.log("get friendship status");
     const data = await areWeFriends(req.params.id, req.session.userId);
-    console.log("friendship status data", data);
-    if (data) {
-        res.return("none");
+    console.log("friendship status data", req.params.id);
+    if (!data.length) {
+        res.json(data);
+    } else {
+        res.json([req.session.userId, data]);
     }
 });
 
-app.post("/friendship", async (req, res) => {
+app.post("/friendship/:id", async (req, res) => {
     console.log("post friendship");
-    const data = await letsBeFriends(req.session.userId);
+    const data = await letsBeFriends(req.params.id, req.session.userId);
+    console.log("button", req.body.buttonText);
+    if (req.body.buttonText == "Send friendship request") {
+        res.json({ request: true });
+    } else if (req.body.buttonText == "Accept friendship") {
+        await acceptFriendship(req.session.userId);
+        res.json({ accepted: true });
+    } else if (
+        req.body.buttonText == "Cancel request" ||
+        req.body.buttonText == "End friendship"
+    ) {
+        await deleteRequest(req.params.id, req.session.userId);
+        res.json({ delete: true });
+    }
 });
 
 app.get("/welcome", (req, res) => {

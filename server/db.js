@@ -70,23 +70,32 @@ module.exports.searchUsers = function (val) {
     return db.query(query, params);
 };
 
-module.exports.areWeFriends = function (viewedUser, viewerUser) {
+module.exports.areWeFriends = function (recipientUser, senderUser) {
     const query =
         "SELECT * FROM friendships WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1);";
-    const params = [viewedUser, viewerUser];
+    const params = [recipientUser, senderUser];
+    return db.query(query, params).then(({ rows }) => {
+        return rows;
+    });
+};
+
+module.exports.letsBeFriends = function (recipientUser, senderUser) {
+    const query =
+        "INSERT INTO friendships (recipient_id, sender_id) VALUES ($1, $2) RETURNING sender_id;";
+    const params = [recipientUser, senderUser];
     return db.query(query, params);
 };
 
-module.exports.letsBeFriends = function (viewerUser, viewedUser) {
+module.exports.acceptFriendship = function (recipientUser) {
     const query =
-        "INSERT INTO friendships (recipient_id, sender_id) VALUES ($1, $2);";
-    const params = [viewedUser, viewerUser];
+        "UPDATE friendships SET accepted = true WHERE recipient_id = $1 RETURNING accepted";
+    const params = [recipientUser];
     return db.query(query, params);
 };
 
-module.exports.deleteRequest = function (viewedUser, viewerUser) {
+module.exports.deleteRequest = function (recipientUser, senderUser) {
     const query =
-        "DELETE FROM friendships WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1)";
-    const params = [viewedUser, viewerUser];
+        "DELETE FROM friendships WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1) RETURNING sender_id;";
+    const params = [recipientUser, senderUser];
     return db.query(query, params);
 };
