@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import Welcome from "./welcome";
 import { App } from "./app";
+// import { init } from "./socket";
 
 let elem;
 
