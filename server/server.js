@@ -1,5 +1,10 @@
 const express = require("express");
 const app = express();
+// const server = require("http").Server(app);
+// const io = require("socket.io")(server, {
+//     allowRequest: (req, callback) =>
+//         callback(null, req.headers.referer.startsWith("http://localhost:3000")),
+// });
 const {
     signUp,
     getUser,
@@ -16,6 +21,7 @@ const {
     letsBeFriends,
     acceptFriendship,
     deleteRequest,
+    getWannabeFriends,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -251,6 +257,17 @@ app.post("/friendship/:id", async (req, res) => {
         await deleteRequest(req.params.id, req.session.userId);
         res.json({ delete: true });
     }
+});
+
+app.get("/wannabefriends", (req, res) => {
+    getWannabeFriends(req.session.userId)
+        .then((data) => {
+            console.log("wannabe", data);
+            res.json(data.rows);
+        })
+        .catch((err) => {
+            console.log("wannabe err", err);
+        });
 });
 
 app.get("/welcome", (req, res) => {

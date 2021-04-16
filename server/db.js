@@ -99,3 +99,10 @@ module.exports.deleteRequest = function (recipientUser, senderUser) {
     const params = [recipientUser, senderUser];
     return db.query(query, params);
 };
+
+module.exports.getWannabeFriends = function (id) {
+    const query =
+        "SELECT id, first, last, profile_pic, accepted FROM friendships JOIN users ON (accepted = false AND recipient_id = $1 AND requester_id = id) OR (accepted = true AND recipient_id = $1 AND requester_id = id) OR (accepted = true AND requester_id = $1 AND recipient_id = id);";
+    const params = [id];
+    return db.query(query, params);
+};
