@@ -106,3 +106,17 @@ module.exports.getWannabeFriends = function (id) {
     const params = [id];
     return db.query(query, params);
 };
+
+module.exports.okToBeFriends = function (sender, recipient) {
+    const query =
+        "UPDATE friendships SET accepted = true WHERE sender_id = $1 AND recipient_id = $2 RETURNING sender_id;";
+    const params = [sender, recipient];
+    return db.query(query, params);
+};
+
+module.exports.letsUnfriend = function (recipientUser, senderUser) {
+    const query =
+        "DELETE FROM friendships WHERE (recipient_id = $1 AND sender_id = $2) OR (recipient_id = $2 AND sender_id = $1) RETURNING sender_id;";
+    const params = [recipientUser, senderUser];
+    return db.query(query, params);
+};

@@ -9,11 +9,18 @@ export async function receiveFriendsWannabes() {
     };
 }
 
-export async function acceptFriend() {
-    const { data } = await axios.post();
+export async function acceptFriend(id) {
+    const { data } = await axios.post("/acceptfriend/" + id);
     return {
         type: "ACCEPT_FRIEND",
+        data: data.sender_id,
     };
 }
 
-export function unfriend() {}
+export async function unfriend(id) {
+    const { data } = await axios.post("/unfriend/" + id);
+    return {
+        type: "UNFRIEND",
+        data: data.sender_id,
+    };
+}

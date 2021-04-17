@@ -22,6 +22,8 @@ const {
     acceptFriendship,
     deleteRequest,
     getWannabeFriends,
+    okToBeFriends,
+    letsUnfriend,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -267,6 +269,29 @@ app.get("/wannabefriends", (req, res) => {
         })
         .catch((err) => {
             console.log("wannabe err", err);
+        });
+});
+
+app.post("/acceptfriend/:id", (req, res) => {
+    okToBeFriends(req.params.id, req.session.userId)
+        .then((data) => {
+            console.log("okToBeFriends", data);
+            res.json(data.rows);
+        })
+        .catch((err) => {
+            console.log("okToBeFriends err", err);
+        });
+});
+
+app.post("/unfriend/:id", (req, res) => {
+    console.log("something unfriend");
+    letsUnfriend(req.params.id, req.session.userId)
+        .then((data) => {
+            console.log("letsUnfriend", data);
+            res.json(data.rows);
+        })
+        .catch((err) => {
+            console.log("letsUnfriend err", err);
         });
 });
 

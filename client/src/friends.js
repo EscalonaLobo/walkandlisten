@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { receiveFriendsWannabes } from "./actions";
+import { acceptFriend, receiveFriendsWannabes, unfriend } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export function Friends() {
@@ -36,6 +36,9 @@ export function Friends() {
                                 friend.profilepic || "noun_profile_1222484.png"
                             }
                         ></img>
+                        <button onClick={() => dispatch(unfriend(friend.id))}>
+                            Unfriend
+                        </button>
                     </div>
                 ))}
             <h1>Wannabe Friends</h1>
@@ -50,6 +53,11 @@ export function Friends() {
                                 wannabe.profilepic || "noun_profile_1222484.png"
                             }
                         ></img>
+                        <button
+                            onClick={() => dispatch(acceptFriend(wannabe.id))}
+                        >
+                            Let us be friends
+                        </button>
                     </div>
                 ))}
         </div>
