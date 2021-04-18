@@ -9,13 +9,15 @@ export function Profile(props) {
             <p>
                 {props.first} {props.last}
             </p>
-            <ProfilePic
-                firstName={props.first}
-                lastName={props.last}
-                profilepic={props.profilepic}
-                showUploader={props.showUploader}
-            />
-            <BioEditor bio={props.bio} setBio={props.setBio} />
+            <section id={"profile-section"}>
+                <ProfilePic
+                    firstName={props.first}
+                    lastName={props.last}
+                    profilepic={props.profilepic}
+                    showUploader={props.showUploader}
+                />
+                <BioEditor bio={props.bio} setBio={props.setBio} />
+            </section>
         </div>
     );
 }

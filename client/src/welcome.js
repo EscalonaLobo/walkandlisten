@@ -8,7 +8,7 @@ import { Profile } from "./profile.js";
 export default function Welcome() {
     return (
         <div>
-            <h1 id="welcome">Welcome to The Facebook Rip-off</h1>
+            <h1 id="welcome">Welcome to Tigerbook</h1>
             <HashRouter>
                 <Route exact path="/" component={Registration} />
                 <Route path="/login" component={Login} />

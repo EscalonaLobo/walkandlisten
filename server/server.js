@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-// const server = require("http").Server(app);
-// const io = require("socket.io")(server, {
-//     allowRequest: (req, callback) =>
-//         callback(null, req.headers.referer.startsWith("http://localhost:3000")),
-// });
+const server = require("http").Server(app);
+const io = require("socket.io")(server, {
+    allowRequest: (req, callback) =>
+        callback(null, req.headers.referer.startsWith("http://localhost:3000")),
+});
 const {
     signUp,
     getUser,
@@ -39,12 +39,23 @@ const uidSafe = require("uid-safe");
 const s3 = require("./s3");
 const { s3Url } = require("./config.json");
 
-app.use(
-    cookieSession({
-        secret: `I'm always angry.`,
-        maxAge: "1000 * 60 * 60 * 24 * 14s",
-    })
-);
+// app.use(
+//     cookieSession({
+//         secret: `I'm always angry.`,
+//         maxAge: "1000 * 60 * 60 * 24 * 14s",
+//     })
+// );
+
+const cookieSessionMiddleware = cookieSession({
+    secret: `I'm always angry.`,
+    maxAge: 1000 * 60 * 60 * 24 * 90,
+});
+
+app.use(cookieSessionMiddleware);
+io.use(function (socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
+
 app.use(compression());
 
 app.use(express.json());
@@ -312,6 +323,6 @@ app.get("*", function (req, res) {
     }
 });
 
-app.listen(process.env.PORT || 3001, function () {
+server.listen(process.env.PORT || 3001, function () {
     console.log("I'm listening.");
 });

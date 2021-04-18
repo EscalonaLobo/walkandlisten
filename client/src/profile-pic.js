@@ -3,7 +3,8 @@ export default function ProfilePic(props) {
     return (
         <div id="profilepic">
             <img
-                src={props.profilepic || "noun_profile_1222484.png"}
+                id={"thepic"}
+                src={props.profilepic || "smallcat.png"}
                 onClick={() => props.showUploader()}
             ></img>
         </div>
