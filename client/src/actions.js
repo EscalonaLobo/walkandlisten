@@ -24,3 +24,20 @@ export async function unfriend(id) {
         data: data.sender_id,
     };
 }
+
+export async function getChat(data) {
+    console.log("do some getchat");
+    console.log("getchat", data);
+    return {
+        type: "MESSAGES",
+        data,
+    };
+}
+
+export async function chatMessage(data) {
+    console.log(data);
+    return {
+        type: "MESSAGE",
+        data,
+    };
+}

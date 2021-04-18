@@ -24,6 +24,7 @@ const {
     getWannabeFriends,
     okToBeFriends,
     letsUnfriend,
+    getChat,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -321,6 +322,50 @@ app.get("*", function (req, res) {
     } else {
         res.sendFile(path.join(__dirname, "..", "client", "index.html"));
     }
+});
+
+// make sure you write all your socket code INSIDE io.on('connection')
+io.on("connection", async (socket) => {
+    // console.log(`socket id ${socket.id} is now connected`);
+
+    const userId = socket.request.session.userId;
+
+    // we don't want logged out users to use sockets!
+    if (!userId) {
+        return socket.disconnect(true);
+    }
+
+    // if user makes it to this point in the code, then it means they're logged in
+    // & are successfully connected to sockets
+
+    // this is a good place to go get the last 10 chat messages
+    // we'll need to make a new table for chats
+    // your db query for getting the last 10 messages will need to be a JOIN
+    // you'll need info from both the users table and chats!
+    // i.e. user's first name, last name, image, and chat msg
+    // the most recent chat message should be displayed at the BOTTOM
+
+    const data = await getChat();
+    io.sockets.emit("mostRecentMsgs", data);
+
+    // getChat().then(({ rows }) => {
+    //     console.log(rows);
+    //     io.sockets.emit("mostRecentMsgs", rows);
+    // });
+
+    // ADDING A NEW MSG - let's listen for a new chat msg being sent from the client
+    socket.on("My amazing new chat message", (msg) => {
+        console.log("This message is coming in from chat.js component: ", msg);
+        console.log("user who sent that new msg just now is: ", userId);
+
+        // 1. do a db query to store the new chat message into the chat table!!
+        // 2. also do a db query to get info about the user (first name, last name, img) - will probably need to be a JOIN
+        // once you have your chat object, you'll want to EMIT it to EVERYONE so they can see it immediately.
+        io.sockets.emit("addChatMsg", msg);
+    });
+
+    // 1st arg - ('My amazing chat message') - listens to the event that will be coming from chat.js
+    // 2nd arg - (newMsg) - is the info that comes along with the emit from chat.js
 });
 
 server.listen(process.env.PORT || 3001, function () {

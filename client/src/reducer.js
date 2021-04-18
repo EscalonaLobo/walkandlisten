@@ -1,4 +1,4 @@
-export default function (state = {}, action) {
+export default function (state = { chat: [] }, action) {
     console.log("do something");
     if (action.type == "RECEIVE_FRIENDS_WANNABES") {
         state = {
@@ -29,6 +29,20 @@ export default function (state = {}, action) {
             friends: state.friends.filter(
                 (friend) => friend.id !== action.data
             ),
+        };
+    }
+
+    if (action.type == "MESSAGES") {
+        state = {
+            ...state,
+            chat: action.data,
+        };
+    }
+
+    if (action.type == "MESSAGE") {
+        state = {
+            ...state,
+            chat: [action.data, ...state.chat],
         };
     }
 

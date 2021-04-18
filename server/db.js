@@ -120,3 +120,11 @@ module.exports.letsUnfriend = function (recipientUser, senderUser) {
     const params = [recipientUser, senderUser];
     return db.query(query, params);
 };
+
+module.exports.getChat = function () {
+    const query =
+        "SELECT messages.id, messages.sender_id, messages.message, first, last FROM users JOIN messages ON (messages.sender_id = users.id) ORDER BY messages.id DESC LIMIT 10;";
+    return db.query(query).then((rows) => {
+        return rows;
+    });
+};
