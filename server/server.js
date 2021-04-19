@@ -25,6 +25,7 @@ const {
     okToBeFriends,
     letsUnfriend,
     getChat,
+    insertChatMessage,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -346,6 +347,7 @@ io.on("connection", async (socket) => {
     // the most recent chat message should be displayed at the BOTTOM
 
     const data = await getChat();
+    // console.log("data in server", data);
     io.sockets.emit("mostRecentMsgs", data);
 
     // getChat().then(({ rows }) => {
@@ -354,14 +356,15 @@ io.on("connection", async (socket) => {
     // });
 
     // ADDING A NEW MSG - let's listen for a new chat msg being sent from the client
-    socket.on("My amazing new chat message", (msg) => {
+    socket.on("Add a message", async (msg) => {
         console.log("This message is coming in from chat.js component: ", msg);
         console.log("user who sent that new msg just now is: ", userId);
+        const data = insertChatMessage(userId, msg);
 
         // 1. do a db query to store the new chat message into the chat table!!
         // 2. also do a db query to get info about the user (first name, last name, img) - will probably need to be a JOIN
         // once you have your chat object, you'll want to EMIT it to EVERYONE so they can see it immediately.
-        io.sockets.emit("addChatMsg", msg);
+        io.sockets.emit("addChatMsg", data);
     });
 
     // 1st arg - ('My amazing chat message') - listens to the event that will be coming from chat.js

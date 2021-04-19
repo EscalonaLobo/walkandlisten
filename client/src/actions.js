@@ -34,8 +34,8 @@ export async function getChat(data) {
     };
 }
 
-export async function chatMessage(data) {
-    console.log(data);
+export async function insertChatMessage(data) {
+    console.log("insertchat", data);
     return {
         type: "MESSAGE",
         data,

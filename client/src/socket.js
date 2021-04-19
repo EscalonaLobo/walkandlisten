@@ -1,15 +1,16 @@
 import io from "socket.io-client";
-import { chatMessages, chatMessage } from "./actions";
+import { getChat, insertChatMessage } from "./actions";
 
 export let socket;
 
 export const init = (store) => {
-    console.log(store);
     if (!socket) {
         socket = io.connect();
 
-        socket.on("chatMessages", (msgs) => store.dispatch(chatMessages(msgs)));
+        socket.on("mostRecentMsgs", (msgs) => store.dispatch(getChat(msgs)));
 
-        socket.on("chatMessage", (msg) => store.dispatch(chatMessage(msg)));
+        socket.on("addChatMsg", (msg) =>
+            store.dispatch(insertChatMessage(msg))
+        );
     }
 };

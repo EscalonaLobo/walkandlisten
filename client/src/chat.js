@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Chat() {
     const elemRef = useRef();
-    const chatMessages = useSelector((state) => state && state.chat);
+    const chatMessages = useSelector((state) => (state && state.chat) || []);
     // this will be undefined for you right now!!
     console.log("here are my last 10 chat messages: ", chatMessages);
 
@@ -24,7 +24,7 @@ export default function Chat() {
         console.log(e);
         if (e.key === "Enter") {
             e.preventDefault(); // this will prevent going to the next line
-            socket.emit("My amazing chat message", e.target.value);
+            socket.emit("Add a message", e.target.value);
             e.target.value = ""; // clears input field after we click enter
         }
     };
@@ -33,12 +33,17 @@ export default function Chat() {
         <div>
             <p className="chat-title">Welcome to Chat</p>
             <div className="chat-messages-container" ref={elemRef}>
-                {/* {chatMessages
-                    .slice()
-                    .reverse()
-                    .map((msg) => (
-                        <div key={msg.id}></div>
-                    ))} */}
+                <div className="chat-messages-container" ref={elemRef}>
+                    {chatMessages
+                        .slice()
+                        .reverse()
+                        .map((msg) => (
+                            <div key={msg.id}>
+                                <h4>{msg.first}</h4>
+                                <p>{msg.message}</p>
+                            </div>
+                        ))}
+                </div>
                 <p>My Chat Message</p>
                 <p>My Chat Message</p>
                 <p>My Chat Message</p>
