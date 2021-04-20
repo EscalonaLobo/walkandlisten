@@ -65,7 +65,8 @@ module.exports.lastThreeUsers = function () {
 };
 
 module.exports.searchUsers = function (val) {
-    const query = "SELECT first FROM users WHERE first ILIKE $1;";
+    const query =
+        "SELECT first, profilepic, id FROM users WHERE first ILIKE $1;";
     const params = [val + "%"];
     return db.query(query, params);
 };

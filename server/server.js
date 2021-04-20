@@ -214,6 +214,7 @@ app.post("/userbio", (req, res) => {
         console.log("bio data", result);
         console.log("body bio", req.body);
         res.json(result.rows[0]);
+        console.log(result.rows[0]);
     });
 });
 

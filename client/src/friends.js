@@ -22,6 +22,14 @@ export function Friends() {
     console.log("friends", friends);
     console.log("wannabe", wannabes);
 
+    if (!friends) {
+        return null;
+    }
+
+    if (!wannabes) {
+        return null;
+    }
+
     return (
         <div>
             <h1>Friends</h1>
