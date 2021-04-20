@@ -359,7 +359,9 @@ io.on("connection", async (socket) => {
     socket.on("Add a message", async (msg) => {
         console.log("This message is coming in from chat.js component: ", msg);
         console.log("user who sent that new msg just now is: ", userId);
-        const data = insertChatMessage(userId, msg);
+
+        const data = await insertChatMessage(userId, msg);
+        console.log("data on add msg", data);
 
         // 1. do a db query to store the new chat message into the chat table!!
         // 2. also do a db query to get info about the user (first name, last name, img) - will probably need to be a JOIN

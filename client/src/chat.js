@@ -28,22 +28,20 @@ export default function Chat() {
             e.target.value = ""; // clears input field after we click enter
         }
     };
-
+    console.log(chatMessages);
     return (
         <div>
             <p className="chat-title">Welcome to Chat</p>
             <div className="chat-messages-container" ref={elemRef}>
-                <div className="chat-messages-container" ref={elemRef}>
-                    {chatMessages
-                        .slice()
-                        .reverse()
-                        .map((msg) => (
-                            <div key={msg.id}>
-                                <h4>{msg.first}</h4>
-                                <p>{msg.message}</p>
-                            </div>
-                        ))}
-                </div>
+                {chatMessages
+                    .slice()
+                    .reverse()
+                    .map((msg) => (
+                        <div key={msg.id}>
+                            <h4>{msg.first}</h4>
+                            <p>{msg.message}</p>
+                        </div>
+                    ))}
                 <p>My Chat Message</p>
                 <p>My Chat Message</p>
                 <p>My Chat Message</p>
