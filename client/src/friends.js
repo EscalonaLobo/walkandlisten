@@ -27,7 +27,7 @@ export function Friends() {
             <h1>Friends</h1>
             {friends &&
                 friends.map((friend) => (
-                    <div key={friend.id}>
+                    <div id="friend-section" key={friend.id}>
                         <p>
                             {friend.first} {friend.last}
                         </p>
@@ -44,7 +44,7 @@ export function Friends() {
             <h1>Wannabe Friends</h1>
             {wannabes &&
                 wannabes.map((wannabe) => (
-                    <div key={wannabe.id}>
+                    <div id="wannabe-section" key={wannabe.id}>
                         <p>
                             {wannabe.first} {wannabe.last}
                         </p>

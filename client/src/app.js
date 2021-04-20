@@ -59,16 +59,39 @@ export class App extends Component {
         });
     }
 
+    logout(e) {
+        e.preventDefault();
+        axios.get("/logout").then((data) => {
+            location.replace("/welcome");
+        });
+    }
+
     render() {
         return (
             <section id="app">
-                <h1>The Facebook Rip-off</h1>
+                <h1>🐯 Tigerbook 🐯</h1>
                 <div id="header">
                     <Logo />
                     <ProfilePic
                         {...this.state.user}
                         showUploader={() => this.showUploader()}
                     />
+                    <ul>
+                        <li>
+                            <a href="/friends">
+                                Your tiger friends and requests
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/users">Find new tigers</a>
+                        </li>
+                        <li>
+                            <a href="/chat">Chat with tigers</a>
+                        </li>
+                    </ul>
+                    <button id="btn-logout" onClick={(e) => this.logout(e)}>
+                        Log out
+                    </button>
                 </div>
 
                 <BrowserRouter>

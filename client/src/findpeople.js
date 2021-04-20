@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 export default function FindPeople() {
     const [query, setQuery] = useState("");
@@ -33,10 +34,16 @@ export default function FindPeople() {
             ></input>
             {friends.map((friend, i) => {
                 return (
-                    <div key={i}>
-                        <p>{friend.first}</p>
-                        <p>{friend.last}</p>
-                        <p>{friend.bio}</p>
+                    <div id="findpeep-container" key={i}>
+                        <Link to={"/user/" + friend.id}>
+                            <img
+                                id="findpeep-img"
+                                src={friend.profilepic}
+                            ></img>
+                        </Link>
+                        <p id="findpeep-p">
+                            {friend.first} {friend.last}
+                        </p>
                     </div>
                 );
             })}

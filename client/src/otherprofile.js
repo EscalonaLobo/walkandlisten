@@ -18,7 +18,7 @@ export default class OtherProfile extends Component {
                     this.props.history.push("/");
                 } else {
                     this.setState(data);
-                    // console.log(this.state);
+                    console.log(this.state);
                 }
             })
             .catch((err) => console.log("error in mount", err));

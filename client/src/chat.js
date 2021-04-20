@@ -37,14 +37,13 @@ export default function Chat() {
                     .slice()
                     .reverse()
                     .map((msg) => (
-                        <div key={msg.id}>
-                            <h4>{msg.first}</h4>
-                            <p>{msg.message}</p>
+                        <div id="chat-content" key={msg.id}>
+                            <h4>
+                                {msg.first} {msg.last} =>
+                            </h4>
+                            <p id="chat-msg">{msg.message}</p>
                         </div>
                     ))}
-                <p>My Chat Message</p>
-                <p>My Chat Message</p>
-                <p>My Chat Message</p>
             </div>
             <textarea
                 placeholder="Add your message here"

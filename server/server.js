@@ -224,7 +224,7 @@ app.get("/user/:id.json", (req, res) => {
     } else {
         getUserInfo(req.params.id)
             .then((result) => {
-                // console.log("user", result);
+                console.log("user", result.rows[0]);
                 res.json(result.rows[0]);
             })
             .catch((err) => {
@@ -306,6 +306,11 @@ app.post("/unfriend/:id", (req, res) => {
         .catch((err) => {
             console.log("letsUnfriend err", err);
         });
+});
+
+app.get("/logout", (req, res) => {
+    req.session.userId = null;
+    res.sendStatus(200);
 });
 
 app.get("/welcome", (req, res) => {
