@@ -1,0 +1,220 @@
+body {
+    background-color: ghostwhite;
+    box-sizing: border-box;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: #eec643;
+}
+
+#welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin: 10px;
+    padding: 10px;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eec643;
+}
+
+#reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    background-color: #eef0f2;
+    box-shadow: 10px 5px 5px black;
+    position: relative;
+    z-index: 1;
+    margin: 20px;
+}
+
+#profile-section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: #eec643;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    align-self: flex-start;
+    border: 5px dotted #141414;
+    margin-right: 100px;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-row: 3;
+}
+
+ul {
+    grid-row: 2;
+}
+
+#btn-logout {
+    grid-row: 2;
+    width: 70px;
+    height: 20px;
+    margin: 20px;
+}
+
+#profilepic {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    border: 5px solid #141414;
+    margin-right: 30px;
+}
+
+#uploader {
+    position: absolute;
+    z-index: 2;
+    width: 150px;
+    height: 50px;
+    background-color: #0d21a1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 5px 5px black;
+    margin-top: 250px;
+}
+
+#uploader-input {
+    font-size: 0.5rem;
+    margin: 0;
+}
+
+#btn-uploader {
+    font-size: 0.5rem;
+    align-self: start;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#img-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+#findpeep-container {
+    height: 200px;
+    width: 300px;
+    background-color: #eef0f2;
+    overflow-y: scroll;
+    border: 1mm ridge rgba(13, 33, 161, 0.6);
+}
+
+.chat-messages-container {
+    height: 200px;
+    width: 300px;
+    background-color: #eef0f2;
+    border: 1mm ridge rgba(13, 33, 161, 0.6);
+    overflow-y: scroll;
+}
+
+#bio-editor {
+    height: 100px;
+    width: 90%;
+    background-color: white;
+    border: 2px solid #141414;
+    margin: 10px;
+    padding: 10px;
+}
+
+#findpeep-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+#findpeep-img {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border: solid #141414 2px;
+}
+
+#findpeep-p {
+    margin-left: 10px;
+}
+
+#chat-content {
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-row: 2;
+    background-color: #eef0f2;
+}
+
+h4 {
+    font-size: 0.8rem;
+    margin: 0px;
+}
+
+#chat-msg {
+    margin: 0px;
+    font-size: 0.6rem;
+}
+
+textarea {
+    margin: 5px;
+}
+
+#welcome-p {
+    margin: 0px;
+}
+
+#friend-section {
+    height: 200px;
+    width: 300px;
+    background-color: #eef0f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+#wannabe-section {
+    height: 200px;
+    width: 300px;
+    background-color: #eef0f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
