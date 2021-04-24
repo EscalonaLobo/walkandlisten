@@ -160,6 +160,13 @@ module.exports.getUrlau = function () {
     });
 };
 
+module.exports.getUrlbel = function () {
+    const query = "SELECT * FROM urlbel";
+    return db.query(query).then(({ rows }) => {
+        return rows;
+    });
+};
+
 module.exports.getUrlaustria = function () {
     const query = "SELECT * FROM urlaustria";
     return db.query(query).then(({ rows }) => {
@@ -321,13 +328,6 @@ module.exports.getUrlams = function () {
     });
 };
 
-module.exports.getUrlams = function () {
-    const query = "SELECT * FROM urlams";
-    return db.query(query).then(({ rows }) => {
-        return rows;
-    });
-};
-
 module.exports.getUrllima = function () {
     const query = "SELECT * FROM urllima";
     return db.query(query).then(({ rows }) => {
@@ -343,7 +343,7 @@ module.exports.getUrllisbon = function () {
 };
 
 module.exports.getUrlru = function () {
-    const query = "SELECT * FROM urlru";
+    const query = "SELECT * FROM urlurlru";
     return db.query(query).then(({ rows }) => {
         return rows;
     });

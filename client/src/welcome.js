@@ -62,6 +62,310 @@ export default class Welcome extends Component {
             .catch((err) => console.log("err in click", err));
     }
 
+    handleClickau(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlau", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickvi(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlaustria", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickbr(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlbrazil", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickch(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlchina", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickbo(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlcolom", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickha(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlcuba", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickpr(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlprague", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickden(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urldenmark", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickegypt(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlegypt", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickethi(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlethiopia", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickfin(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlfinland", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickber(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlberlin", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickathens(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlathens", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickbuda(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlbuda", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickindi(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlfindia", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickdub(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urldublin", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickisra(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlfisrael", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickita(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlrome", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickitatok(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urltokyo", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
     render() {
         return (
             <div id="wrapper">
@@ -72,25 +376,63 @@ export default class Welcome extends Component {
                         <p onClick={(e) => this.handleClickar(e)}>
                             Buenos Aires, Argentina
                         </p>
-                        <p>Sydney, Australia</p>
-                        <p>Vienna, Austria</p>
-                        <p>São Paulo, Brazil</p>
-                        <p>Beijin, China</p>
-                        <p>Bogota, Colombia</p>
-                        <p>Havana, Cuba</p>
-                        <p>Prague, Czech Republic</p>
-                        <p>Copenhagen, Denmark</p>
-                        <p>Cairo, Egypt</p>
-                        <p>Addis Abada, Ethiopia</p>
-                        <p>Helsinki, Finland</p>
-                        <p>Berlin, Germany</p>
-                        <p>Athens, Greece</p>
-                        <p>Budapest, Hungary</p>
-                        <p>New Delhi, India</p>
-                        <p>Dublin, Ireland</p>
-                        <p>Tel Aviv, Israel</p>
-                        <p>Rome, Italy</p>
-                        <p>Tokyo, Japan</p>
+                        <p onClick={(e) => this.handleClickau(e)}>
+                            Sydney, Australia
+                        </p>
+                        <p onClick={(e) => this.handleClickvi(e)}>
+                            Vienna, Austria
+                        </p>
+                        <p onClick={(e) => this.handleClickbr(e)}>
+                            São Paulo, Brazil
+                        </p>
+                        <p onClick={(e) => this.handleClickch(e)}>
+                            Beijin, China
+                        </p>
+                        <p onClick={(e) => this.handleClickbo(e)}>
+                            Bogota, Colombia
+                        </p>
+                        <p onClick={(e) => this.handleClickha(e)}>
+                            Havana, Cuba
+                        </p>
+                        <p onClick={(e) => this.handleClickpr(e)}>
+                            Prague, Czech Republic
+                        </p>
+                        <p onClick={(e) => this.handleClickden(e)}>
+                            Copenhagen, Denmark
+                        </p>
+                        <p onClick={(e) => this.handleClickegypt(e)}>
+                            Cairo, Egypt
+                        </p>
+                        <p onClick={(e) => this.handleClickethi(e)}>
+                            Addis Abada, Ethiopia
+                        </p>
+                        <p onClick={(e) => this.handleClickfin(e)}>
+                            Helsinki, Finland
+                        </p>
+                        <p onClick={(e) => this.handleClickber(e)}>
+                            Berlin, Germany
+                        </p>
+                        <p onClick={(e) => this.handleClickathens(e)}>
+                            Athens, Greece
+                        </p>
+                        <p onClick={(e) => this.handleClickbuda(e)}>
+                            Budapest, Hungary
+                        </p>
+                        <p onClick={(e) => this.handleClickindi(e)}>
+                            New Delhi, India
+                        </p>
+                        <p onClick={(e) => this.handleClickdub(e)}>
+                            Dublin, Ireland
+                        </p>
+                        <p onClick={(e) => this.handleClickisra(e)}>
+                            Tel Aviv, Israel
+                        </p>
+                        <p onClick={(e) => this.handleClickita(e)}>
+                            Rome, Italy
+                        </p>
+                        <p onClick={(e) => this.handleClickitatok(e)}>
+                            Tokyo, Japan
+                        </p>
                         <p onClick={(e) => this.handleClick(e)}>
                             Niiata, Japan
                         </p>
