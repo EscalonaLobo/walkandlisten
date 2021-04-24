@@ -27,6 +27,7 @@ body {
     margin-top: 100px;
     background-color: aliceblue;
     width: 15vh;
+    overflow-y: scroll;
 }
 
 #player {
@@ -44,6 +45,10 @@ body {
 
 #list {
     opacity: 0.5;
+}
+
+p {
+    font-size: 00.6rem;
 }
 
 /* input {

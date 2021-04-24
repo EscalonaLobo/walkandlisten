@@ -27,6 +27,45 @@ const {
     getChat,
     insertChatMessage,
     getUrl,
+    getUrlar,
+    getUrlau,
+    getUrlaustria,
+    getUrlbrazil,
+    getUrlchina,
+    getUrlcolom,
+    getUrlcuba,
+    getUrlprague,
+    getUrldenmark,
+    getUrlegypt,
+    getUrlethiopia,
+    getUrlfinland,
+    getUrlberlin,
+    getUrlathens,
+    getUrlbudapest,
+    getUrlindia,
+    getUrldublin,
+    getUrlisrael,
+    getUrlrome,
+    getUrltokyo,
+    getUrljordan,
+    getUrlkuala,
+    getUrlmx,
+    getUrlmonaco,
+    getUrlams,
+    getUrllima,
+    getUrllisbon,
+    getUrlru,
+    getUrlser,
+    getUrlsin,
+    getUrlbratis,
+    getUrlspain,
+    getUrlstock,
+    getUrlzu,
+    getUrlthai,
+    getUrlis,
+    getUrlky,
+    getUrluk,
+    getUrlus,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -316,7 +355,304 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/url", (req, res) => {
+    console.log(req.body);
     getUrl().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlar", (req, res) => {
+    console.log(req.body);
+    getUrlar().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlau", (req, res) => {
+    console.log(req.body);
+    getUrlau().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlaustria", (req, res) => {
+    console.log(req.body);
+    getUrlaustria().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlbrazil", (req, res) => {
+    console.log(req.body);
+    getUrlbrazil().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlchina", (req, res) => {
+    console.log(req.body);
+    getUrlchina().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlcolom", (req, res) => {
+    console.log(req.body);
+    getUrlcolom().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlcuba", (req, res) => {
+    console.log(req.body);
+    getUrlcuba().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlprague", (req, res) => {
+    console.log(req.body);
+    getUrlprague().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urldenmark", (req, res) => {
+    console.log(req.body);
+    getUrldenmark().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlegypt", (req, res) => {
+    console.log(req.body);
+    getUrlegypt().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlethiopia", (req, res) => {
+    console.log(req.body);
+    getUrlethiopia().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlfinland", (req, res) => {
+    console.log(req.body);
+    getUrlfinland().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlberlin", (req, res) => {
+    console.log(req.body);
+    getUrlberlin().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlathens", (req, res) => {
+    console.log(req.body);
+    getUrlathens().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlbuda", (req, res) => {
+    console.log(req.body);
+    getUrlbudapest().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlfindia", (req, res) => {
+    console.log(req.body);
+    getUrlindia().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urldublin", (req, res) => {
+    console.log(req.body);
+    getUrldublin().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlfisrael", (req, res) => {
+    console.log(req.body);
+    getUrlisrael().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlrome", (req, res) => {
+    console.log(req.body);
+    getUrlrome().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urltokyo", (req, res) => {
+    console.log(req.body);
+    getUrltokyo().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urljordan", (req, res) => {
+    console.log(req.body);
+    getUrljordan().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlmx", (req, res) => {
+    console.log(req.body);
+    getUrlmx().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlmonaco", (req, res) => {
+    console.log(req.body);
+    getUrlmonaco().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlams", (req, res) => {
+    console.log(req.body);
+    getUrlams().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urllima", (req, res) => {
+    console.log(req.body);
+    getUrllima().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urllisbon", (req, res) => {
+    console.log(req.body);
+    getUrllisbon().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlru", (req, res) => {
+    console.log(req.body);
+    getUrlru().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlser", (req, res) => {
+    console.log(req.body);
+    getUrlser().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlsin", (req, res) => {
+    console.log(req.body);
+    getUrlsin().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlbratis", (req, res) => {
+    console.log(req.body);
+    getUrlbratis().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlstock", (req, res) => {
+    console.log(req.body);
+    getUrlstock().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlzu", (req, res) => {
+    console.log(req.body);
+    getUrlzu().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlthai", (req, res) => {
+    console.log(req.body);
+    getUrlthai().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlis", (req, res) => {
+    console.log(req.body);
+    getUrlis().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlky", (req, res) => {
+    console.log(req.body);
+    getUrlky().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urluk", (req, res) => {
+    console.log(req.body);
+    getUrluk().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlus", (req, res) => {
+    console.log(req.body);
+    getUrlus().then((data) => {
         console.log("urldata", data);
         res.json({ data: data[0] });
     });

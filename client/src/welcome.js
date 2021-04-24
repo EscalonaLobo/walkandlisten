@@ -31,9 +31,25 @@ export default class Welcome extends Component {
     }
 
     handleClick(e) {
-        console.log("click on e", e);
+        console.log("click on e", e.target.lastChild.data);
         axios
             .get("/url", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickar(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlar", this.state)
             .then(({ data }) => {
                 console.log("my data", data.data);
                 if (data) {
@@ -50,14 +66,53 @@ export default class Welcome extends Component {
         return (
             <div id="wrapper">
                 <div id="nav">
+                    <h2>Walk around</h2>
+                    <h3>Cities</h3>
                     <div id="walk-contrainer">
-                        <button>Walk in Autralia</button>
-                        <p onClick={(e) => this.handleClick(e)}>
-                            Walk in Maulbourne
+                        <p onClick={(e) => this.handleClickar(e)}>
+                            Buenos Aires, Argentina
                         </p>
-                        <p>Walk in Maulbourne</p>
-                        <p>Walk in Maulbourne</p>
-                        <p>Walk in Maulbourne</p>
+                        <p>Sydney, Australia</p>
+                        <p>Vienna, Austria</p>
+                        <p>São Paulo, Brazil</p>
+                        <p>Beijin, China</p>
+                        <p>Bogota, Colombia</p>
+                        <p>Havana, Cuba</p>
+                        <p>Prague, Czech Republic</p>
+                        <p>Copenhagen, Denmark</p>
+                        <p>Cairo, Egypt</p>
+                        <p>Addis Abada, Ethiopia</p>
+                        <p>Helsinki, Finland</p>
+                        <p>Berlin, Germany</p>
+                        <p>Athens, Greece</p>
+                        <p>Budapest, Hungary</p>
+                        <p>New Delhi, India</p>
+                        <p>Dublin, Ireland</p>
+                        <p>Tel Aviv, Israel</p>
+                        <p>Rome, Italy</p>
+                        <p>Tokyo, Japan</p>
+                        <p onClick={(e) => this.handleClick(e)}>
+                            Niiata, Japan
+                        </p>
+                        <p>Amman, Jordan</p>
+                        <p>Kuala Lumpur, Malaysia</p>
+                        <p>Mexico City, Mexico</p>
+                        <p>Monte Carlo, Monaco</p>
+                        <p>Amsterdam, Netherlands</p>
+                        <p>Lima, Peru</p>
+                        <p>Lisbon, Portugal</p>
+                        <p>Moscow, Russia</p>
+                        <p>Belgrade, Serbia</p>
+                        <p>Singapore, Singapore</p>
+                        <p>Bratislava, Slovenia</p>
+                        <p>Madrid, Spain</p>
+                        <p>Stockholm, Sweden</p>
+                        <p>Zurich, Switzerland</p>
+                        <p>Bangkok, Thailamd</p>
+                        <p>Istanbul, Turkey</p>
+                        <p>Kyiv, Ukraine</p>
+                        <p>London, United Kingdom</p>
+                        <p>New York, United States</p>
                     </div>
                 </div>
                 <div id="player">
