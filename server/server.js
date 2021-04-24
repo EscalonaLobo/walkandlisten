@@ -35,12 +35,12 @@ const cookieSession = require("cookie-session");
 const { match } = require("assert");
 const { json } = require("express");
 const cryptoRandomString = require("crypto-random-string");
-const { sendEmail } = require("./ses.js");
+// const { sendEmail } = require("./ses.js");
 csurf = require("csurf");
 const multer = require("multer");
 const uidSafe = require("uid-safe");
-const s3 = require("./s3");
-const { s3Url } = require("./config.json");
+// const s3 = require("./s3");
+// const { s3Url } = require("./config.json");
 
 // app.use(
 //     cookieSession({
@@ -202,12 +202,12 @@ app.get("/user", (req, res) => {
     });
 });
 
-app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
-    console.log("post made");
-    insertPic(s3Url + req.file.filename, req.session.userId).then((result) => {
-        res.json({ success: true, result });
-    });
-});
+// app.post("/picupload", uploader.single("file"), s3.upload, (req, res) => {
+//     console.log("post made");
+//     insertPic(s3Url + req.file.filename, req.session.userId).then((result) => {
+//         res.json({ success: true, result });
+//     });
+// });
 
 app.post("/userbio", (req, res) => {
     console.log("post userbio");
@@ -315,12 +315,12 @@ app.get("/logout", (req, res) => {
     res.sendStatus(200);
 });
 
-// app.get("/url", (req, res) => {
-//     getUrl().then((data) => {
-//         console.log("urldata", data);
-//         res.json(data.rows);
-//     });
-// });
+app.get("/url", (req, res) => {
+    getUrl().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
 
 app.get("/welcome", (req, res) => {
     //you will need a middleware to get this to work

@@ -1,9 +1,9 @@
-import Registration from "./registration";
-import Login from "./login";
-import Reset from "./reset";
-import { HashRouter, Route } from "react-router-dom";
-import ProfilePic from "./profile-pic";
-import { Profile } from "./profile.js";
+// import Registration from "./registration";
+// import Login from "./login";
+// import Reset from "./reset";
+// import { HashRouter, Route } from "react-router-dom";
+// import ProfilePic from "./profile-pic";
+// import { Profile } from "./profile.js";
 import ReactPlayer from "react-player";
 import { Component } from "react";
 import axios from "./axios";
@@ -12,7 +12,7 @@ export default class Welcome extends Component {
     constructor() {
         super();
         this.state = {
-            error: false,
+            data: [],
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -33,17 +33,17 @@ export default class Welcome extends Component {
     handleClick(e) {
         console.log("click on e", e);
         axios
-            .get("/url")
+            .get("/url", this.state)
             .then(({ data }) => {
-                console.log("something in login");
-                console.log(data);
+                console.log("my data", data.data);
                 if (data) {
+                    console.log("url: ", data.data.url);
                     this.setState({
-                        url: data.url,
+                        url: data.data.url,
                     });
                 }
             })
-            .catch((err) => console.log("err in post click", err));
+            .catch((err) => console.log("err in click", err));
     }
 
     render() {
@@ -63,7 +63,7 @@ export default class Welcome extends Component {
                 <div id="player">
                     <ReactPlayer
                         constrols="false"
-                        url="https://www.youtube.com/watch?v=rAeN7TdGq4o"
+                        url={this.state.url}
                         videoReady={this.videoReady}
                         playing={true}
                         width={"100%"}
