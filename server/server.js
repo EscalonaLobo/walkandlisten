@@ -26,6 +26,7 @@ const {
     letsUnfriend,
     getChat,
     insertChatMessage,
+    getUrl,
 } = require("./db.js");
 const compression = require("compression");
 const path = require("path");
@@ -313,6 +314,13 @@ app.get("/logout", (req, res) => {
     req.session.userId = null;
     res.sendStatus(200);
 });
+
+// app.get("/url", (req, res) => {
+//     getUrl().then((data) => {
+//         console.log("urldata", data);
+//         res.json(data.rows);
+//     });
+// });
 
 app.get("/welcome", (req, res) => {
     //you will need a middleware to get this to work

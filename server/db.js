@@ -138,3 +138,10 @@ module.exports.insertChatMessage = function (senderId, message) {
         return rows[0];
     });
 };
+
+module.exports.getUrl = function () {
+    const query = "SELECT * FROM URL";
+    return db.query(query).then(({ rows }) => {
+        return rows;
+    });
+};

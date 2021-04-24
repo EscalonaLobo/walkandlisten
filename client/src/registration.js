@@ -1,6 +1,8 @@
 import { Component } from "react";
 import axios from "./axios";
 import { Link } from "react-router-dom";
+import YouTube from "react-youtube";
+import ReactPlayer from "react-player";
 
 export default class Registation extends Component {
     constructor() {
@@ -12,68 +14,68 @@ export default class Registation extends Component {
         // this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
-        // console.log("input is doing something");
-        // console.log(e.target.value);
-        this.setState(
-            {
-                // first: e.target.value,
-                [e.target.name]: e.target.value,
-            }
-            // () => console.log("this state", this.state)
-        );
+    _onReady(event) {
+        // access to player in all event handlers via event.target
+        event.target.playVideoAt();
+        console.log(event.target);
     }
 
-    handleClick(e) {
-        e.preventDefault();
-        console.log("clicked register button");
-        axios
-            .post("/register", this.state)
-            .then(({ data }) => {
-                console.log("somethign");
-                console.log(data);
-                if (data.success) {
-                    location.replace("/");
-                } else {
-                    this.setState({
-                        error: true,
-                    });
-                }
-            })
-            .catch((err) => console.log("err in post click", err));
+    _onPlay(event) {
+        // access to player in all event handlers via event.target
+        const player = event.target;
+        console.log(event.target);
     }
 
     render() {
+        const opts = {
+            height: "1000",
+            width: "1000",
+            playerVars: {
+                // https://developers.google.com/youtube/player_parameters
+                autoplay: 1,
+                controls: 0,
+                disablekb: 1,
+                modestbranding: 1,
+                showinfo: 0,
+                playsinline: 1,
+                rel: 0,
+                iv_load_policy: 3,
+            },
+        };
         return (
             <div id="registration">
-                <h2>Register today!</h2>
-                <Link to="/login">Log in here</Link>
-                {this.state.error && <p>that's an mistake</p>}
-                <input
-                    type="text"
-                    name="first"
-                    placeholder="name"
-                    onChange={(e) => this.handleChange(e)}
-                ></input>
-                <input
-                    type="text"
-                    name="last"
-                    placeholder="last"
-                    onChange={(e) => this.handleChange(e)}
-                ></input>
-                <input
-                    type="text"
-                    name="email"
-                    placeholder="email"
-                    onChange={(e) => this.handleChange(e)}
-                ></input>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    onChange={(e) => this.handleChange(e)}
-                ></input>
-                <button onClick={(e) => this.handleClick(e)}>Register</button>
+                <YouTube
+                    videoId="xlQmXz7wzLE"
+                    opts={opts}
+                    onReady={this._onReady}
+                    onPlay={this._onPlay}
+                />
+                <ReactPlayer
+                    constrols="false"
+                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                    videoReady={this.videoReady}
+                    playing={true}
+                    config={{
+                        youtube: {
+                            playerVars: {
+                                showinfo: 0,
+                                playsinline: 1,
+                                rel: 0,
+                                iv_load_policy: 3,
+                                modestbranding: 1,
+                            },
+                        },
+                        facebook: {
+                            appId: "12345",
+                        },
+                    }}
+                />
+
+                <div id="player">
+                    <div id="nav">
+                        <h1>Navigation</h1>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -70,6 +70,7 @@ export class App extends Component {
         return (
             <section id="app">
                 <h1>🐯 Tigerbook 🐯</h1>
+                <div id="player"></div>
                 <div id="header">
                     <Logo />
                     <ProfilePic
