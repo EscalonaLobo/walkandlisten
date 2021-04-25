@@ -13,21 +13,19 @@ export default class Welcome extends Component {
         super();
         this.state = {
             data: [],
+            playing: true,
         };
 
         // this.handleChange = this.handleChange.bind(this);
     }
 
-    _onReady(event) {
-        // access to player in all event handlers via event.target
-        event.target.playVideoAt();
-        console.log(event.target);
+    componentDidMount() {
+        this.setState({ url: "https://www.youtube.com/watch?v=zca688Ecwpk" });
     }
 
-    _onPlay(event) {
-        // access to player in all event handlers via event.target
-        const player = event.target;
-        console.log(event.target);
+    handlePlayPause(e) {
+        console.log("eonpause", e);
+        this.setState({ playing: !this.state.playing });
     }
 
     handleClick(e) {
@@ -676,7 +674,7 @@ export default class Welcome extends Component {
                 <div id="nav">
                     <h2>Walk around</h2>
                     <div id="walk-contrainer">
-                        <h3>Pick a city. Scroll for more.</h3>
+                        <h3>Scroll down for more cities.</h3>
                         <p onClick={(e) => this.handleClickar(e)}>
                             Buenos Aires, Argentina
                         </p>
@@ -798,13 +796,27 @@ export default class Welcome extends Component {
                             New York, United States
                         </p>
                     </div>
+                    <div id="faster">
+                        <h3 id="h3faster">Walk faster</h3>
+                        <button id="onex">1x</button>
+                        <button id="onefivex">1.5x</button>
+                        <button id="twox">2x</button>
+                    </div>
+                    <div id="stopgo">
+                        <button
+                            id="stop"
+                            onClick={(e) => this.handlePlayPause(e)}
+                        >
+                            {this.state.playing ? "Stop walking" : "Go"}
+                        </button>
+                    </div>
                 </div>
                 <div id="player">
                     <ReactPlayer
                         constrols="false"
                         url={this.state.url}
                         videoReady={this.videoReady}
-                        playing={true}
+                        playing={this.state.playing}
                         width={"100%"}
                         height={"100%"}
                         config={{
