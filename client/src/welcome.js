@@ -14,6 +14,7 @@ export default class Welcome extends Component {
         this.state = {
             data: [],
             playing: true,
+            playbackRate: 1.0,
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -26,6 +27,11 @@ export default class Welcome extends Component {
     handlePlayPause(e) {
         console.log("eonpause", e);
         this.setState({ playing: !this.state.playing });
+    }
+
+    handleSetPlaybackRate(e) {
+        console.log("eonspeed", e);
+        this.setState({ playbackRate: parseFloat(e.target.value) });
     }
 
     handleClick(e) {
@@ -798,9 +804,27 @@ export default class Welcome extends Component {
                     </div>
                     <div id="faster">
                         <h3 id="h3faster">Walk faster</h3>
-                        <button id="onex">1x</button>
-                        <button id="onefivex">1.5x</button>
-                        <button id="twox">2x</button>
+                        <button
+                            id="onex"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={1}
+                        >
+                            1x
+                        </button>
+                        <button
+                            id="onefivex"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={1.5}
+                        >
+                            1.5x
+                        </button>
+                        <button
+                            id="twox"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={2}
+                        >
+                            2x
+                        </button>
                     </div>
                     <div id="stopgo">
                         <button
@@ -810,6 +834,31 @@ export default class Welcome extends Component {
                             {this.state.playing ? "Stop walking" : "Go"}
                         </button>
                     </div>
+                    <div id="links">
+                        <a
+                            id="coffee"
+                            href="https://www.buymeacoffee.com/gabrielescalona"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            | Buy me a coffee |
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/escalonalobo/"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            | Hire me |
+                        </a>
+
+                        <a
+                            href="https://docs.google.com/spreadsheets/d/15MgW6Z9Zl5AqDXwxC3Macv8DppRsGz5zlTH6QxzJgmc/edit?usp=sharing"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            | Sources |
+                        </a>
+                    </div>
                 </div>
                 <div id="player">
                     <ReactPlayer
@@ -817,6 +866,7 @@ export default class Welcome extends Component {
                         url={this.state.url}
                         videoReady={this.videoReady}
                         playing={this.state.playing}
+                        playbackRate={this.state.playbackRate}
                         width={"100%"}
                         height={"100%"}
                         config={{
