@@ -675,8 +675,8 @@ export default class Welcome extends Component {
             <div id="wrapper">
                 <div id="nav">
                     <h2>Walk around</h2>
-                    <h3>Cities</h3>
                     <div id="walk-contrainer">
+                        <h3>Pick a city. Scroll for more.</h3>
                         <p onClick={(e) => this.handleClickar(e)}>
                             Buenos Aires, Argentina
                         </p>
