@@ -308,6 +308,14 @@ app.get("/urlmonaco", (req, res) => {
     });
 });
 
+app.get("/urlkuala", (req, res) => {
+    console.log(req.body);
+    getUrlkuala().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
 app.get("/urlams", (req, res) => {
     console.log(req.body);
     getUrlams().then((data) => {
@@ -359,6 +367,14 @@ app.get("/urlsin", (req, res) => {
 app.get("/urlbratis", (req, res) => {
     console.log(req.body);
     getUrlbratis().then((data) => {
+        console.log("urldata", data);
+        res.json({ data: data[0] });
+    });
+});
+
+app.get("/urlmad", (req, res) => {
+    console.log(req.body);
+    getUrlspain().then((data) => {
         console.log("urldata", data);
         res.json({ data: data[0] });
     });

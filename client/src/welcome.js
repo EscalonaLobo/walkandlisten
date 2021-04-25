@@ -366,6 +366,310 @@ export default class Welcome extends Component {
             .catch((err) => console.log("err in click", err));
     }
 
+    handleClickjor(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urljordan", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickkuala(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlkuala", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickmx(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlmx", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickmonac(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlmonaco", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickams(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlams", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClicklim(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urllima", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClicklis(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urllisbon", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickru(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlru", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickser(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlser", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClicksin(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlsin", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickbra(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlbratis", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickmad(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlmad", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickstock(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlstock", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickzu(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlzu", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickbang(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlthai", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickist(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlis", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickky(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlky", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickuk(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urluk", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
+    handleClickus(e) {
+        console.log("click on e", e.target.lastChild.data);
+        axios
+            .get("/urlus", this.state)
+            .then(({ data }) => {
+                console.log("my data", data.data);
+                if (data) {
+                    console.log("url: ", data.data.url);
+                    this.setState({
+                        url: data.data.url,
+                    });
+                }
+            })
+            .catch((err) => console.log("err in click", err));
+    }
+
     render() {
         return (
             <div id="wrapper">
@@ -436,25 +740,63 @@ export default class Welcome extends Component {
                         <p onClick={(e) => this.handleClick(e)}>
                             Niiata, Japan
                         </p>
-                        <p>Amman, Jordan</p>
-                        <p>Kuala Lumpur, Malaysia</p>
-                        <p>Mexico City, Mexico</p>
-                        <p>Monte Carlo, Monaco</p>
-                        <p>Amsterdam, Netherlands</p>
-                        <p>Lima, Peru</p>
-                        <p>Lisbon, Portugal</p>
-                        <p>Moscow, Russia</p>
-                        <p>Belgrade, Serbia</p>
-                        <p>Singapore, Singapore</p>
-                        <p>Bratislava, Slovenia</p>
-                        <p>Madrid, Spain</p>
-                        <p>Stockholm, Sweden</p>
-                        <p>Zurich, Switzerland</p>
-                        <p>Bangkok, Thailamd</p>
-                        <p>Istanbul, Turkey</p>
-                        <p>Kyiv, Ukraine</p>
-                        <p>London, United Kingdom</p>
-                        <p>New York, United States</p>
+                        <p onClick={(e) => this.handleClickjor(e)}>
+                            Amman, Jordan
+                        </p>
+                        <p onClick={(e) => this.handleClickkuala(e)}>
+                            Kuala Lumpur, Malaysia
+                        </p>
+                        <p onClick={(e) => this.handleClickmx(e)}>
+                            Mexico City, Mexico
+                        </p>
+                        <p onClick={(e) => this.handleClickmonac(e)}>
+                            Monte Carlo, Monaco
+                        </p>
+                        <p onClick={(e) => this.handleClickams(e)}>
+                            Amsterdam, Netherlands
+                        </p>
+                        <p onClick={(e) => this.handleClicklim(e)}>
+                            Lima, Peru
+                        </p>
+                        <p onClick={(e) => this.handleClicklis(e)}>
+                            Lisbon, Portugal
+                        </p>
+                        <p onClick={(e) => this.handleClickru(e)}>
+                            Moscow, Russia
+                        </p>
+                        <p onClick={(e) => this.handleClickser(e)}>
+                            Belgrade, Serbia
+                        </p>
+                        <p onClick={(e) => this.handleClicksin(e)}>
+                            Singapore, Singapore
+                        </p>
+                        <p onClick={(e) => this.handleClickbra(e)}>
+                            Bratislava, Slovenia
+                        </p>
+                        <p onClick={(e) => this.handleClickmad(e)}>
+                            Madrid, Spain
+                        </p>
+                        <p onClick={(e) => this.handleClickstock(e)}>
+                            Stockholm, Sweden
+                        </p>
+                        <p onClick={(e) => this.handleClickzu(e)}>
+                            Zurich, Switzerland
+                        </p>
+                        <p onClick={(e) => this.handleClickbang(e)}>
+                            Bangkok, Thailamd
+                        </p>
+                        <p onClick={(e) => this.handleClickist(e)}>
+                            Istanbul, Turkey
+                        </p>
+                        <p onClick={(e) => this.handleClickky(e)}>
+                            Kyiv, Ukraine
+                        </p>
+                        <p onClick={(e) => this.handleClickuk(e)}>
+                            London, United Kingdom
+                        </p>
+                        <p onClick={(e) => this.handleClickus(e)}>
+                            New York, United States
+                        </p>
                     </div>
                 </div>
                 <div id="player">
