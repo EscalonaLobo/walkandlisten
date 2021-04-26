@@ -886,6 +886,7 @@ export default class Welcome extends Component {
                 </div>
                 <div id="player">
                     <ReactPlayer
+                        ref={this.ref}
                         onReady={() => console.log("onReady")}
                         constrols="false"
                         url={this.state.url}
