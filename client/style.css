@@ -18,6 +18,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    margin-top: -10%; /*yt hack*/
 }
 
 #nav {
@@ -31,6 +32,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 80px; /*yt hack*/
 }
 
 #walk-contrainer {
@@ -44,9 +46,9 @@ main {
     margin-top: 0;
 }
 
-/* iframe {
-    height: 150%;
-} */
+iframe {
+    height: 135%;
+}
 
 #player {
     /* min-height: 100%;
@@ -57,8 +59,9 @@ main {
     left: 0;
     position: absolute;
     z-index: 1;
-    /* overflow: hidden; */
+    overflow: hidden;
     pointer-events: none;
+    padding-bottom: 10%; /*yt hack*/
 }
 
 #list {

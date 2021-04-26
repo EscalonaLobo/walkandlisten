@@ -867,6 +867,7 @@ export default class Welcome extends Component {
                         videoReady={this.videoReady}
                         playing={this.state.playing}
                         playbackRate={this.state.playbackRate}
+                        loop="true"
                         width={"100%"}
                         height={"100%"}
                         config={{
