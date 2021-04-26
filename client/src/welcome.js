@@ -826,6 +826,30 @@ export default class Welcome extends Component {
                             2x
                         </button>
                     </div>
+                    <div id="faster">
+                        <h3 id="h3faster">Time travel</h3>
+                        <button
+                            id="onex"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={1}
+                        >
+                            -10
+                        </button>
+                        <button
+                            id="onefivex"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={1.5}
+                        >
+                            +20
+                        </button>
+                        <button
+                            id="twox"
+                            onClick={(e) => this.handleSetPlaybackRate(e)}
+                            value={2}
+                        >
+                            +50
+                        </button>
+                    </div>
                     <div id="stopgo">
                         <button
                             id="stop"
@@ -862,6 +886,7 @@ export default class Welcome extends Component {
                 </div>
                 <div id="player">
                     <ReactPlayer
+                        onReady={() => console.log("onReady")}
                         constrols="false"
                         url={this.state.url}
                         videoReady={this.videoReady}
