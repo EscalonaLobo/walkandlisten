@@ -678,7 +678,7 @@ export default class Welcome extends Component {
 
     render() {
         return (
-            <div id="wrapper">
+            <div>
                 <div id="nav">
                     <h2>Walk around</h2>
                     <div id="walk-contrainer">
@@ -886,30 +886,32 @@ export default class Welcome extends Component {
                         </a>
                     </div>
                 </div>
-                <div id="player">
-                    <ReactPlayer
-                        ref={this.ref}
-                        onReady={() => console.log("onReady")}
-                        constrols="false"
-                        url={this.state.url}
-                        videoReady={this.videoReady}
-                        playing={this.state.playing}
-                        playbackRate={this.state.playbackRate}
-                        loop="true"
-                        width={"100%"}
-                        height={"100%"}
-                        config={{
-                            youtube: {
-                                playerVars: {
-                                    showinfo: 0,
-                                    playsinline: 1,
-                                    rel: 0,
-                                    iv_load_policy: 3,
-                                    modestbranding: 1,
+                <div id="wrapper">
+                    <div id="player">
+                        <ReactPlayer
+                            ref={this.ref}
+                            onReady={() => console.log("onReady")}
+                            constrols="false"
+                            url={this.state.url}
+                            videoReady={this.videoReady}
+                            playing={this.state.playing}
+                            playbackRate={this.state.playbackRate}
+                            loop="true"
+                            width={"100%"}
+                            height={"100%"}
+                            config={{
+                                youtube: {
+                                    playerVars: {
+                                        showinfo: 0,
+                                        playsinline: 1,
+                                        rel: 0,
+                                        iv_load_policy: 3,
+                                        modestbranding: 1,
+                                    },
                                 },
-                            },
-                        }}
-                    />
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         );
