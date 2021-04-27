@@ -17,6 +17,7 @@ export default class Welcome extends Component {
             data: [],
             playing: true,
             playbackRate: 1.0,
+            muted: true,
         };
 
         // this.handleChange = this.handleChange.bind(this);
@@ -24,7 +25,12 @@ export default class Welcome extends Component {
 
     componentDidMount() {
         this.setState({ url: "https://www.youtube.com/watch?v=zca688Ecwpk" });
-        this.setState({ mutes: "true" });
+        this.setState({ muted: true });
+    }
+
+    handleUnmute(e) {
+        console.log("event on mute:", e);
+        this.setState({ muted: !this.state.muted });
     }
 
     handlePlayPause(e) {
@@ -805,6 +811,11 @@ export default class Welcome extends Component {
                             New York, United States
                         </p>
                     </div>
+                    <div id="stopgo">
+                        <button id="stop" onClick={(e) => this.handleUnmute(e)}>
+                            {this.state.muted ? "Sound on" : "Off"}{" "}
+                        </button>
+                    </div>
                     <div id="faster">
                         <h3 id="h3faster">Walk faster</h3>
                         <button
@@ -829,6 +840,7 @@ export default class Welcome extends Component {
                             2x
                         </button>
                     </div>
+
                     <div id="faster">
                         <h3 id="h3faster">Time travel</h3>
                         <button
@@ -900,7 +912,7 @@ export default class Welcome extends Component {
                             loop="true"
                             width={"100%"}
                             height={"100%"}
-                            muted={"true"}
+                            muted={this.state.muted}
                             config={{
                                 youtube: {
                                     playerVars: {
