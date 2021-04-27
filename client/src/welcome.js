@@ -24,6 +24,7 @@ export default class Welcome extends Component {
 
     componentDidMount() {
         this.setState({ url: "https://www.youtube.com/watch?v=zca688Ecwpk" });
+        this.setState({ mutes: "true" });
     }
 
     handlePlayPause(e) {
@@ -899,6 +900,7 @@ export default class Welcome extends Component {
                             loop="true"
                             width={"100%"}
                             height={"100%"}
+                            muted={"true"}
                             config={{
                                 youtube: {
                                     playerVars: {
