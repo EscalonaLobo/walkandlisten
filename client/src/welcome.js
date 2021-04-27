@@ -7,6 +7,7 @@
 import ReactPlayer from "react-player";
 import { Component } from "react";
 import axios from "./axios";
+// import  VolumeUpIcon  from "@material-ui/icons/VolumeUp";
 
 //random commet
 
@@ -813,7 +814,7 @@ export default class Welcome extends Component {
                     </div>
                     <div id="stopgo">
                         <button id="stop" onClick={(e) => this.handleUnmute(e)}>
-                            {this.state.muted ? "Sound on" : "Off"}{" "}
+                            {this.state.muted ? "Sound on" : "Off"}
                         </button>
                     </div>
                     <div id="faster">
