@@ -64,7 +64,7 @@ iframe {
     /* position: absolute; */
     /* z-index: 1; */
     /* overflow: hidden; */
-    /* pointer-events: none; */
+    pointer-events: none;
     /* padding-bottom: 23%; */
 }
 

@@ -7,6 +7,7 @@
 import ReactPlayer from "react-player";
 import { Component } from "react";
 import axios from "./axios";
+import React from "react";
 // import  VolumeUpIcon  from "@material-ui/icons/VolumeUp";
 
 //random commet
@@ -14,6 +15,7 @@ import axios from "./axios";
 export default class Welcome extends Component {
     constructor() {
         super();
+        this.player = React.createRef();
         this.state = {
             data: [],
             playing: true,
@@ -42,6 +44,45 @@ export default class Welcome extends Component {
     handleSetPlaybackRate(e) {
         console.log("eonspeed", e);
         this.setState({ playbackRate: parseFloat(e.target.value) });
+    }
+
+    async handleTimeTravel(e) {
+        console.log("click on time", e);
+        console.log("player", this.player.current);
+        const currentTime = await this.player.current.getCurrentTime();
+        console.log("currentT", currentTime);
+        if (currentTime) {
+            this.player.current.seekTo(
+                // parseFloat(e.target.value + currentTime)
+                currentTime + +e.target.value
+            );
+        }
+    }
+
+    async handleTimeTravelTwo(e) {
+        console.log("click on time", e);
+        console.log("player", this.player.current);
+        const currentTime = await this.player.current.getCurrentTime();
+        console.log("currentT", currentTime);
+        if (currentTime) {
+            this.player.current.seekTo(
+                // parseFloat(e.target.value + currentTime)
+                currentTime + +e.target.value
+            );
+        }
+    }
+
+    async handleTimeTravelThree(e) {
+        console.log("click on time", e);
+        console.log("player", this.player.current);
+        const currentTime = await this.player.current.getCurrentTime();
+        console.log("currentT", currentTime);
+        if (currentTime) {
+            this.player.current.seekTo(
+                // parseFloat(e.target.value + currentTime)
+                currentTime + +e.target.value
+            );
+        }
     }
 
     handleClick(e) {
@@ -846,22 +887,22 @@ export default class Welcome extends Component {
                         <h3 id="h3faster">Time travel</h3>
                         <button
                             id="onex"
-                            onClick={(e) => this.handleSetPlaybackRate(e)}
-                            value={1}
+                            onClick={(e) => this.handleTimeTravelThree(e)}
+                            value={-10}
                         >
                             -10
                         </button>
                         <button
                             id="onefivex"
-                            onClick={(e) => this.handleSetPlaybackRate(e)}
-                            value={1.5}
+                            onClick={(e) => this.handleTimeTravelTwo(e)}
+                            value={20}
                         >
                             +20
                         </button>
                         <button
                             id="twox"
-                            onClick={(e) => this.handleSetPlaybackRate(e)}
-                            value={2}
+                            onClick={(e) => this.handleTimeTravel(e)}
+                            value={50}
                         >
                             +50
                         </button>
@@ -903,8 +944,8 @@ export default class Welcome extends Component {
                 <div id="wrapper">
                     <div id="player">
                         <ReactPlayer
-                            ref={this.ref}
                             onReady={() => console.log("onReady")}
+                            ref={this.player}
                             constrols="false"
                             url={this.state.url}
                             videoReady={this.videoReady}
